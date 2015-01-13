@@ -77,7 +77,7 @@ void Robot::TeleopInit() {
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
 	//driveSubsystem->arcadeDrive(oi->joystick); //TODO: move to Drive command
-	driveSubsystem->robotDrive41->TankDrive(oi->joystick, oi->joystick, true);
+	driveSubsystem->robotDrive41->ArcadeDrive(oi->joystick, true);
 	SmartDashboard::PutString("TeleopPeriodic", "Invoked");
 }
 
