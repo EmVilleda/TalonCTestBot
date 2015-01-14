@@ -85,8 +85,7 @@ void Robot::TeleopInit() {
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
 	//TODO: move to Drive command
-	//driveSubsystem->arcadeDrive(oi->joystick);
-	//driveSubsystem->robotDrive41->ArcadeDrive(oi->joystick, true);
+	driveSubsystem->robotDrive41->ArcadeDrive(oi->joystick, true);
 	SmartDashboard::PutNumber("EncoderValueR", rEncoder->GetRaw());
 	SmartDashboard::PutNumber("EncoderValueL", lEncoder->GetRaw());
 	SmartDashboard::PutString("TeleopPeriodic", "Invoked");
