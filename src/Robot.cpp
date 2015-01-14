@@ -29,6 +29,10 @@ void Robot::RobotInit() {
 	// which commands extend), subsystems are not guaranteed to be
 	// yet. Thus, their requires() statements may grab null pointers. Bad
 	// news. Don't move it.
+	FILE *f = fopen("ligerbots.txt", "w+");
+	fputs("Ligerbots Init\n", f);
+	fclose(f);
+	printf("Ligerbots Init was here.\n");
 	oi = new OI();
 	lw = LiveWindow::GetInstance();
 
@@ -67,7 +71,7 @@ void Robot::TeleopInit() {
 	// these lines or comment it out.
 	if (autonomousCommand != NULL)
 		autonomousCommand->Cancel();
-	std::cout << "TeleopInit";
+	std::cout << "TeleopInit\n";
 	SmartDashboard::PutString("TeleopInit", "Called");
 }
 
