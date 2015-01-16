@@ -24,7 +24,7 @@
 
 class Robot : public IterativeRobot {
 public:
-	Command *autonomousCommand;
+	CommandGroup *autonomousCommand;
 	Command *driveCommand;
 	static OI *oi;
 	LiveWindow *lw;
