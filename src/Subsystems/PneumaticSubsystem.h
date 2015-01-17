@@ -21,7 +21,6 @@
  */
 class PneumaticSubsystem: public Subsystem {
 private:
-	Solenoid* testSolenoid;
 	bool solenoidState;
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
@@ -35,6 +34,7 @@ public:
 	void TurnOff();
 	bool GetSolenoidState();
 	void SetSolenoidState(bool state);
+	DoubleSolenoid* testSolenoid;
 };
 
 #endif

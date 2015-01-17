@@ -76,6 +76,8 @@ void Robot::TeleopInit() {
 	if (autonomousCommand != NULL)
 		autonomousCommand->Cancel();
 	std::cout << "TeleopInit\n";
+	driveCommand->Start();
+//	pneumaticSubsystem->testSolenoid->InitSolenoid();
 	SmartDashboard::PutString("TeleopInit", "Called");
 }
 
