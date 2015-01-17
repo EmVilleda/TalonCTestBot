@@ -3,17 +3,18 @@
 
 CANTalon* CANTalons::Init(int dN, char* description) {
 	if (dN > MAX_TALONS) {
-		printf("Failed to initialize CANTalon #%d, max allowed is %d.", dN, MAX_TALONS);
+		printf("Failed to initialize CANTalon #%d, max allowed is %d.\n", dN, MAX_TALONS);
 		return NULL;
 	}
 	if (strlen(description) > 20)
 	{
-		printf("Failed to initialize CANTalon #%d, your description '%s' exceeds 20 characters.", dN, description);
+		printf("Failed to initialize CANTalon #%d, your description '%s' exceeds 20 characters.\n", dN, description);
 		return NULL;
 	}
 	m_talons[dN].deviceNumber = dN;
 	m_talons[dN].description = description;
 	CANTalon *t = new CANTalon(dN);
+	float busvoltage = 0.0;
 	if (NULL != t) {
 		m_talons[dN].talon = t;
 		if (t->GetBusVoltage() > 8.0) {
@@ -24,9 +25,10 @@ CANTalon* CANTalons::Init(int dN, char* description) {
 		sprintf(m_talons[dN].stat_label, "%sStatus", description);
 		sprintf(m_talons[dN].volt_label, "%sVolts", description);
 		sprintf(m_talons[dN].amp_label, "%sAmps", description);
-		printf("Talon %d, %s initialized, Bus Voltage: %f", dN, description, m_talons[dN].voltage);
+		printf("Talon %d, %s initialized, Bus Voltage: %f, Output Voltage %f\n", dN, description,
+				busvoltage,  m_talons[dN].voltage);
 	}
-	else printf("Talon %d, %s failed initialization, new returned NULL.", dN, description);
+	else printf("Talon %d, %s failed initialization, new returned NULL.\n", dN, description);
 	return t;
 }
 
