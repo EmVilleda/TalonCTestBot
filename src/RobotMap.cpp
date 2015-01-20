@@ -64,5 +64,6 @@ void RobotMap::init() {
     workingCompressor = new Compressor(0);
     workingCompressor->SetClosedLoopControl(true);
     workingCompressor->Start();
-    printf("Compressor closed loop set to true, compressor is currently %s.\n", workingCompressor->Enabled() ? "on" : "off");
+    printf("Compressor closed loop set to true, compressor is %s, compressor switch is %s, current=%f.\n", (workingCompressor->Enabled() ? "enabled" : "disabled"),
+    		(workingCompressor->GetPressureSwitchValue() ? "on" : "off"), workingCompressor->GetCompressorCurrent());
 }

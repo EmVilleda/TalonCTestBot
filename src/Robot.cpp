@@ -56,7 +56,7 @@ void Robot::DisabledInit(){
 
 void Robot::DisabledPeriodic() {
 	Scheduler::GetInstance()->Run();
-
+	UpdateDashboardPeriodic();
 }
 
 void Robot::AutonomousInit() {
@@ -66,6 +66,7 @@ void Robot::AutonomousInit() {
 
 void Robot::AutonomousPeriodic() {
 	Scheduler::GetInstance()->Run();
+	UpdateDashboardPeriodic();
 }
 
 void Robot::TeleopInit() {
@@ -86,18 +87,22 @@ void Robot::TeleopPeriodic() {
 	driveCommand->Start();
 	if (!Once) SmartDashboard::PutString("TeleopPeriodic", "Invoked");
 	Once = true;
+	UpdateDashboardPeriodic();
 }
 
 void Robot::TestPeriodic() {
 	lw->Run();
-
 }
 
-void UpdateDashboardPeriodic() {
+void Robot::UpdateDashboardPeriodic() {
 	// Do this every 1/10th of a second, not more often for efficiency
 	if (Ticks++%5==0) {
 		Compressor* wC = RobotMap::workingCompressor;
-		if (NULL!=wC) SmartDashboard::PutBoolean("Compressor", wC->Enabled());
+		if (NULL!=wC) {
+			SmartDashboard::PutBoolean("CompEnabled", wC->Enabled());
+			SmartDashboard::PutBoolean("CompSwitch", wC->Enabled());
+			SmartDashboard::PutNumber("CompCurrent", wC->GetCompressorCurrent());
+		}
 		RobotMap::Ct->UpdateDashboard();
 		if (Ticks%100) printf("UpdateDashboard\n");
 	}
