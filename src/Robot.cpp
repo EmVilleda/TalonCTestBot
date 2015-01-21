@@ -56,7 +56,7 @@ void Robot::DisabledInit(){
 
 void Robot::DisabledPeriodic() {
 	Scheduler::GetInstance()->Run();
-	UpdateDashboardPeriodic();
+	//UpdateDashboardPeriodic();
 }
 
 void Robot::AutonomousInit() {
@@ -100,11 +100,10 @@ void Robot::UpdateDashboardPeriodic() {
 		Compressor* wC = RobotMap::workingCompressor;
 		if (NULL!=wC) {
 			SmartDashboard::PutBoolean("CompEnabled", wC->Enabled());
-			SmartDashboard::PutBoolean("CompSwitch", wC->Enabled());
+			SmartDashboard::PutBoolean("CompSwitch", wC->GetPressureSwitchValue());
 			SmartDashboard::PutNumber("CompCurrent", wC->GetCompressorCurrent());
 		}
 		RobotMap::Ct->UpdateDashboard();
-		if (Ticks%100) printf("UpdateDashboard\n");
 	}
 
 }
