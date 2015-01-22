@@ -27,7 +27,7 @@ void Drive::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void Drive::Execute() {
-	Robot::driveSubsystem->robotDrive41->ArcadeDrive(Robot::oi->joystick, true);
+	Robot::driveSubsystem->robotDrive->ArcadeDrive(Robot::oi->joystick, true);
 }
 
 // Make this return true when this Command no longer needs to run execute()

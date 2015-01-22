@@ -29,7 +29,7 @@ void DriveForward::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void DriveForward::Execute(){
-	Robot::driveSubsystem->robotDrive41->ArcadeDrive(1.0,0.0,false);
+	Robot::driveSubsystem->robotDrive->ArcadeDrive(1.0,0.0,false);
 	//todo: get encoder
 	currentTime++;
 	if(currentTime > ticks){

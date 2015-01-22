@@ -29,7 +29,7 @@ public:
 	SpeedController* lBack;
 	SpeedController* rFront;
 	SpeedController* rBack;
-	RobotDrive* robotDrive41;
+	RobotDrive* robotDrive;
 	Encoder* lEncoder;
 	Encoder* rEncoder;
 
