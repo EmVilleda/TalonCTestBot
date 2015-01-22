@@ -9,8 +9,8 @@
 // it from being updated in the future.
 
 
-#ifndef AUTONOMOUS_COMMAND_H
-#define AUTONOMOUS_COMMAND_H
+#ifndef DUMMY1_H
+#define DUMMY1_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,9 +21,9 @@
  *
  * @author ExampleAuthor
  */
-class AutonomousCommand: public CommandGroup {
+class dummy1: public Command {
 public:
-	AutonomousCommand();
+	dummy1();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

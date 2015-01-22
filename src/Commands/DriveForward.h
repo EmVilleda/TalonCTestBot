@@ -9,8 +9,8 @@
 // it from being updated in the future.
 
 
-#ifndef AUTONOMOUS_COMMAND_H
-#define AUTONOMOUS_COMMAND_H
+#ifndef DRIVECOMMAND_H
+#define DRIVECOMMAND_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,14 +21,17 @@
  *
  * @author ExampleAuthor
  */
-class AutonomousCommand: public CommandGroup {
+class DriveForward: public Command {
 public:
-	AutonomousCommand();
+	DriveForward(int _ticks);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
+private:
+	int ticks, currentTime;
+	bool isFinished;
 };
 
 #endif

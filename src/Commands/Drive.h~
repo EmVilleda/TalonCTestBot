@@ -9,8 +9,8 @@
 // it from being updated in the future.
 
 
-#ifndef AUTONOMOUS_COMMAND_H
-#define AUTONOMOUS_COMMAND_H
+#ifndef DRIVE_H
+#define DRIVE_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,9 +21,9 @@
  *
  * @author ExampleAuthor
  */
-class AutonomousCommand: public CommandGroup {
+class Drive: public Command {
 public:
-	AutonomousCommand();
+	Drive();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
