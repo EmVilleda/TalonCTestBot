@@ -1,0 +1,84 @@
+<xml version="1.0">
+<dashboard>
+	<widget field="DistanceSensorVoltage" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="17" y="23"/>
+	</widget>
+	<widget field="EncoderValueL" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="188" y="126"/>
+	</widget>
+	<widget field="EncoderValueR" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="188" y="105"/>
+	</widget>
+	<widget field="EncoderSpeed" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="189" y="84"/>
+	</widget>
+	<widget field="EncoderDistance" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="189" y="63"/>
+	</widget>
+	<widget field="FrontRightVolts" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="188" y="42"/>
+	</widget>
+	<widget field="FrontRightStatus" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="188" y="21"/>
+	</widget>
+	<widget field="FrontRightAmps" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="188" y="0"/>
+	</widget>
+	<widget field="FrontLeftVolts" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="33" y="0"/>
+	</widget>
+	<widget field="FrontLeftStatus" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="387"/>
+	</widget>
+	<widget field="FrontLeftAmps" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="366"/>
+	</widget>
+	<widget field="CompSwitch" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="345"/>
+	</widget>
+	<widget field="CompEnabled" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="324"/>
+	</widget>
+	<widget field="CompCurrent" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="303"/>
+	</widget>
+	<widget field="BackRightVolts" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="282"/>
+	</widget>
+	<widget field="BackRightStatus" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="261"/>
+	</widget>
+	<widget field="BackRightAmps" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="240"/>
+	</widget>
+	<widget field="BackLeftVolts" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="219"/>
+	</widget>
+	<widget field="BackLeftStatus" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="198"/>
+	</widget>
+	<widget field="BackLeftAmps" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="177"/>
+	</widget>
+	<widget field="TeleopPeriodic" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="156"/>
+	</widget>
+	<widget field="TeleopInit" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="135"/>
+	</widget>
+	<widget field="Drive" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="101"/>
+	</widget>
+	<widget field="Autonomous Command" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="67"/>
+	</widget>
+	<widget field="ArbitraryCommand" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="33"/>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.ConnectionIndicator">
+		<location x="0" y="0"/>
+	</static-widget>
+</dashboard>
+<live-window>
+</live-window>
+</xml>
