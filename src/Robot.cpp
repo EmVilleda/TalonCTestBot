@@ -35,9 +35,9 @@ void Robot::RobotInit() {
 	// news. Don't move it.
 	printf("Ligerbots Init\n");
 
+	pneumaticSubsystem = new PneumaticSubsystem();
 	oi = new OI();
 	driveCommand = new Drive();
-	//pneumaticSubsystem = new PneumaticSubsystem();
 	lw = LiveWindow::GetInstance();
 
 	lEncoder = RobotMap::driveSubsystemLEncoder;
@@ -89,12 +89,11 @@ void Robot::TeleopInit() {
 
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
-	driveCommand->Start();
+//	driveCommand->Start();
 	if (!Once) SmartDashboard::PutString("TeleopPeriodic", "Invoked");
 	Once = true;
 	UpdateDashboardPeriodic();
 	//TODO: move to Drive command
-	driveSubsystem->robotDrive->ArcadeDrive(oi->joystick, true);
 	SmartDashboard::PutString("TeleopPeriodic", "Invoked");
 }
 
@@ -111,15 +110,17 @@ void Robot::UpdateDashboardPeriodic() {
 //			SmartDashboard::PutBoolean("CompSwitch", wC->GetPressureSwitchValue());
 //			SmartDashboard::PutNumber("CompCurrent", wC->GetCompressorCurrent());
 //		}
+		CANTalon* canEncr = RobotMap::driveSubsystemMotorControlleFrontRight;
+		CANTalon* canEncl = RobotMap::driveSubsystemMotorControllerFrontLeft;
 		Encoder* enc = RobotMap::driveSubsystemREncoder;
 		if (NULL!=enc) {
-			SmartDashboard::PutNumber("EncoderDistance",enc->GetDistance());
-			SmartDashboard::PutNumber("EncoderSpeed",enc->GetRate());
+			SmartDashboard::PutNumber("EncoderSpeed",canEncr->GetSpeed());
+			SmartDashboard::PutNumber("EncoderPosition",canEncr->GetEncPosition());
 		}
 		RobotMap::Ct->UpdateDashboard();
 
-		SmartDashboard::PutNumber("EncoderValueR", rEncoder->GetRaw());
-		SmartDashboard::PutNumber("EncoderValueL", lEncoder->GetRaw());
+		SmartDashboard::PutNumber("EncoderValueR", canEncr->GetPosition());
+		SmartDashboard::PutNumber("EncoderValueL", canEncl->GetPosition());
 
 		if (NULL!=RobotMap::distanceSensor) {
 			SmartDashboard::PutNumber("DistanceSensorVoltage", RobotMap::distanceSensor->GetVoltage());  // THIS IS THE LINE THAT IS FAILING!!

@@ -21,7 +21,7 @@
  */
 class PneumaticSubsystem: public Subsystem {
 private:
-	bool solenoidState;
+	bool solenoidState = false;
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 public:
