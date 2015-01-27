@@ -28,7 +28,16 @@ void Drive::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void Drive::Execute() {
 	if (RobotMap::distanceSensor->GetVoltage() <= 0.6) {
-		Robot::driveSubsystem->robotDrive->ArcadeDrive(Robot::oi->joystick, true);
+//		On an XBox controller, RawAxis4 is the X axis of the right stick
+//		We will use this for the left/right control only
+//		Drive(a,b) where a is the magnitude and b is the curve of it
+		int y = Robot::oi->joystick->GetY();
+		int x = Robot::oi->joystick->GetRawAxis(4);
+		Robot::driveSubsystem->robotDrive->Drive(y,x);
+//		Robot::driveSubsystem->robotDrive->ArcadeDrive(Robot::oi->joystick, true);
+	}
+	else if (RobotMap::distanceSensor->GetVoltage() >0.6) {
+		Robot::driveSubsystem->robotDrive->ArcadeDrive(0,0,true);
 	}
 }
 

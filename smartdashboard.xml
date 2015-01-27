@@ -1,5 +1,8 @@
 <xml version="1.0">
 <dashboard>
+	<widget field="EncoderPosition" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="214" y="147"/>
+	</widget>
 	<widget field="DistanceSensorVoltage" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="17" y="23"/>
 	</widget>
@@ -80,5 +83,25 @@
 	</static-widget>
 </dashboard>
 <live-window>
+	<widget field="Ungrouped" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
+		<widget field="Encoder[0]" type="Quadrature Encoder" class="edu.wpi.first.smartdashboard.livewindow.elements.EncoderDisplay">
+			<location x="6" y="16"/>
+			<height>98</height>
+			<width>201</width>
+		</widget>
+		<widget field="Encoder[2]" type="Quadrature Encoder" class="edu.wpi.first.smartdashboard.livewindow.elements.EncoderDisplay">
+			<location x="6" y="114"/>
+			<height>98</height>
+			<width>201</width>
+		</widget>
+		<widget field="AnalogInput[0]" type="Analog Input" class="edu.wpi.first.smartdashboard.livewindow.elements.SingleNumberDisplay">
+			<location x="6" y="212"/>
+			<height>20</height>
+			<width>201</width>
+		</widget>
+		<location x="0" y="0"/>
+		<width>213</width>
+		<height>239</height>
+	</widget>
 </live-window>
 </xml>
