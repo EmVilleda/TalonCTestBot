@@ -43,6 +43,7 @@ public:
 	static Encoder* driveSubsystemLEncoder;
 	static Encoder* driveSubsystemREncoder;
 	static AnalogInput* distanceSensor;
+	static AnalogInput* colorSensor;
 
 	static void init();
 };

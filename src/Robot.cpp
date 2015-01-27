@@ -40,10 +40,10 @@ void Robot::RobotInit() {
 	driveCommand = new Drive();
 	lw = LiveWindow::GetInstance();
 
-	lEncoder = RobotMap::driveSubsystemLEncoder;
-	rEncoder = RobotMap::driveSubsystemREncoder;
-
-	colorSensor = new AnalogInput(0);
+//	lEncoder = RobotMap::driveSubsystemLEncoder;
+//	rEncoder = RobotMap::driveSubsystemREncoder;
+//
+//	colorSensor = new AnalogInput(1);
 
 
 	// instantiate the command used for the autonomous period
@@ -97,8 +97,6 @@ void Robot::TeleopPeriodic() {
 	UpdateDashboardPeriodic();
 	//TODO: move to Drive command
 	SmartDashboard::PutString("TeleopPeriodic", "Invoked");
-	int16_t rawColorValue = colorSensor->GetValue();
-	SmartDashboard::PutNumber("RawColorSensor",rawColorValue);
 }
 
 void Robot::TestPeriodic() {
@@ -130,6 +128,11 @@ void Robot::UpdateDashboardPeriodic() {
 			SmartDashboard::PutNumber("DistanceSensorVoltage", RobotMap::distanceSensor->GetVoltage());  // THIS IS THE LINE THAT IS FAILING!!
 		} else {
 			printf("distanceSensor pointer NULL\n");
+		}
+		if (NULL!=RobotMap::colorSensor) {
+			SmartDashboard::PutNumber("ColorSensorVoltage", RobotMap::colorSensor->GetVoltage());  // THIS IS THE LINE THAT IS FAILING!!
+		} else {
+			printf("colorSensor pointer NULL\n");
 		}
 	}
 
