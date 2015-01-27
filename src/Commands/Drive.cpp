@@ -10,6 +10,7 @@
 
 
 #include "Drive.h"
+float Drive::joystickValueCap = 0.1;
 
 Drive::Drive() {
 	// Use requires() here to declare subsystem dependencies
@@ -27,7 +28,15 @@ void Drive::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void Drive::Execute() {
-	if (RobotMap::distanceSensor->GetVoltage() <= 0.6) {
+	float y = Robot::oi->joystick->GetY();
+	if(fabs(y)>joystickValueCap){
+		//THIS IS TERRIBLE CODE
+		y=joystickValueCap * (y/fabs(y)); // y/fabs(y) is either 1 or -1 depending on the sign of y.
+	}
+
+	float x = Robot::oi->joystick->GetRawAxis(4);
+	bool isDistSensorOK = RobotMap::distanceSensor->GetVoltage() <= 0.6;
+	if (isDistSensorOK || (!isDistSensorOK && y<0)) {
 //		On an XBox controller, RawAxis4 is the X axis of the right stick
 //		We will use this for the left/right control only
 //		Drive(a,b) where a is the magnitude and b is the curve of it
@@ -35,7 +44,7 @@ void Drive::Execute() {
 		float x = Robot::oi->joystick->GetRawAxis(4);
 		Robot::driveSubsystem->robotDrive->Drive(y,x);
 	}
-	else if (RobotMap::distanceSensor->GetVoltage() >0.6) {
+	else{
 		Robot::driveSubsystem->robotDrive->ArcadeDrive(0,0,true);
 	}
 }
