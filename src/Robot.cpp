@@ -40,6 +40,8 @@ void Robot::RobotInit() {
 	driveCommand = new Drive();
 	lw = LiveWindow::GetInstance();
 
+	pdp = new PowerDistributionPanel();
+
 //	lEncoder = RobotMap::driveSubsystemLEncoder;
 //	rEncoder = RobotMap::driveSubsystemREncoder;
 //
@@ -83,6 +85,10 @@ void Robot::TeleopInit() {
 	if (autonomousCommand != NULL)
 		autonomousCommand->Cancel();
 	std::cout << "TeleopInit\n";
+	// Reset the Talons to default modes
+    RobotMap::driveSubsystemMotorControllerFrontLeft->SetControlMode(CANSpeedController::kPercentVbus);
+    RobotMap::driveSubsystemMotorControllerFrontRight->SetControlMode(CANSpeedController::kPercentVbus);
+
 	driveCommand->Start();
 //	pneumaticSubsystem->testSolenoid->InitSolenoid();
 
@@ -112,7 +118,7 @@ void Robot::UpdateDashboardPeriodic() {
 //			SmartDashboard::PutBoolean("CompSwitch", wC->GetPressureSwitchValue());
 //			SmartDashboard::PutNumber("CompCurrent", wC->GetCompressorCurrent());
 //		}
-		CANTalon* canEncr = RobotMap::driveSubsystemMotorControlleFrontRight;
+		CANTalon* canEncr = RobotMap::driveSubsystemMotorControllerFrontRight;
 		CANTalon* canEncl = RobotMap::driveSubsystemMotorControllerFrontLeft;
 		Encoder* enc = RobotMap::driveSubsystemREncoder;
 		if (NULL!=enc) {
@@ -120,9 +126,6 @@ void Robot::UpdateDashboardPeriodic() {
 			SmartDashboard::PutNumber("EncoderPosition",canEncr->GetEncPosition());
 		}
 		RobotMap::Ct->UpdateDashboard();
-
-		SmartDashboard::PutNumber("EncoderValueR", canEncr->GetPosition());
-		SmartDashboard::PutNumber("EncoderValueL", canEncl->GetPosition());
 
 		if (NULL!=RobotMap::distanceSensor) {
 			SmartDashboard::PutNumber("DistanceSensorVoltage", RobotMap::distanceSensor->GetVoltage());  // THIS IS THE LINE THAT IS FAILING!!
@@ -134,6 +137,13 @@ void Robot::UpdateDashboardPeriodic() {
 		} else {
 			printf("colorSensor pointer NULL\n");
 		}
+
+		// Debugging Talons in Follower mode
+		// They're not giving voltage or current readings, so check the PDP
+		SmartDashboard::PutNumber("PDP Current for Talon 1", pdp->GetCurrent(0));
+		SmartDashboard::PutNumber("PDP Current for Talon 2", pdp->GetCurrent(1));
+		SmartDashboard::PutNumber("PDP Current for Talon 3", pdp->GetCurrent(2));
+		SmartDashboard::PutNumber("PDP Current for Talon 4", pdp->GetCurrent(3));
 	}
 
 }

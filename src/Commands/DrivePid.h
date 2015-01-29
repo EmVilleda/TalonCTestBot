@@ -17,13 +17,14 @@
 #include "../Robot.h"
 
 /**
- *
+ * This Command will drive forward based on a PID Loop in the Talons
+ * For now, we'll only drive Talons 3 and 4 since we're having trouble getting Talon 2 to behave.
  *
  * @author ExampleAuthor
  */
-class DriveForward: public Command {
+class DrivePid: public Command {
 public:
-	DriveForward(int _ticks);
+	DrivePid(int _ticks);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

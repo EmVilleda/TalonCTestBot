@@ -35,6 +35,10 @@ void Drive::Execute() {
 	if(fabs(y)>joystickValueCap){
 		y=joystickValueCap * (y/fabs(y)); // y/fabs(y) is either 1 or -1 depending on the sign of y.
 	}
+	if(fabs(x)>joystickValueCap){
+		x=joystickValueCap * (x/fabs(x)); // x/fabs(x) is either 1 or -1 depending on the sign of x.
+	}
+
 
 	bool isDistSensorOK = RobotMap::distanceSensor->GetVoltage() <= distanceSensorThreshold;
 	// If the distanceSensor voltage is > 0.6, we are close enough to the target.
@@ -65,5 +69,6 @@ void Drive::End() {
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void Drive::Interrupted() {
+	End();
 
 }
