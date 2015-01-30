@@ -32,13 +32,12 @@ void Drive::Execute() {
 	// So a negative y value means we want to drive forward.
 	// The ArcadeDrive method seems to expect this.
 	float x = Robot::oi->joystick->GetRawAxis(4);
-	if(fabs(y)>joystickValueCap){
-		y=joystickValueCap * (y/fabs(y)); // y/fabs(y) is either 1 or -1 depending on the sign of y.
-	}
-//	if(fabs(x)>joystickValueCap){
-//		x=joystickValueCap * (x/fabs(x)); // x/fabs(x) is either 1 or -1 depending on the sign of x.
-//	}
 
+	// Cap our joystick positions for testing
+	if (y > joystickValueCap) y = joystickValueCap;
+	else if (y < -joystickValueCap) y = -joystickValueCap;
+	if (x > joystickValueCap) x = joystickValueCap;
+	else if (x < -joystickValueCap) x = -joystickValueCap;
 
 	bool isDistSensorOK = RobotMap::distanceSensor->GetVoltage() <= distanceSensorThreshold;
 	// If the distanceSensor voltage is > 0.6, we are close enough to the target.
@@ -49,7 +48,7 @@ void Drive::Execute() {
 //		Drive(a,b) where a is the magnitude and b is the curve of it
 		Robot::driveSubsystem->robotDrive->ArcadeDrive(y,x);
 	}
-	else{
+	else {
 		Robot::driveSubsystem->robotDrive->ArcadeDrive(0,0,true);
 	}
 	SmartDashboard::PutNumber("Drive Command Y", y);

@@ -39,18 +39,50 @@ void DriveDistanceCommand::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void DriveDistanceCommand::Execute() {
-	bool isDistSensorOK = RobotMap::distanceSensor->GetVoltage() <= distanceSensorThreshold;
-	while ()
+	float leftEnc1 = Robot::driveSubsystem->GetLeftEncoderPosition();
+	float rightEnc1 = Robot::driveSubsystem->GetRightEncoderPosition();
+	float leftEnc2 = leftEnc1;
+	float rightEnc2 = rightEnc1;
+	float distanceTraveled = 0.0;
+
+	while (distanceTraveled < distance) {
+		bool isDistSensorOK = RobotMap::distanceSensor->GetVoltage() <= distanceSensorThreshold;
+		if (!isDistSensorOK) break;
+		leftEnc1 = leftEnc2;
+		rightEnc1 = rightEnc2;
+
+		if ((distance - distanceTraveled) > 512) {
+			Robot::driveSubsystem->robotDrive->ArcadeDrive(-0.8, 0.0);
+			printf("High \n");
+		}
+		/*else if (distanceTraveled < 0.8 * distance){
+			Robot::driveSubsystem->robotDrive->ArcadeDrive(-0.5, 0.0);
+			printf("Medium \n");
+		} */
+		else {
+			Robot::driveSubsystem->robotDrive->ArcadeDrive(-0.4, 0.0);
+			printf("Slow \n");
+		}
+
+		leftEnc2 = Robot::driveSubsystem->GetLeftEncoderPosition();
+		rightEnc2 = Robot::driveSubsystem->GetRightEncoderPosition();
+
+		distanceTraveled += (leftEnc2 - leftEnc1);
+		SmartDashboard::PutNumber("Drive Distance", distanceTraveled);
+
+	}
+	Robot::driveSubsystem->robotDrive->ArcadeDrive(0, 0, true);
+
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool DriveDistanceCommand::IsFinished() {
-	return false;
+	return true;
 }
 
 // Called once after isFinished returns true
 void DriveDistanceCommand::End() {
-
+	Robot::driveCommand->Start()
 }
 
 // Called when another command which requires one or more of the same

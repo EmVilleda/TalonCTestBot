@@ -13,7 +13,7 @@
 	// The following will limit the max drive speed
 	// For competition, this should be 1.0
 	// Until then, we'll keep it slow.
-	static float joystickValueCap = .5;
+	static float joystickValueCap = 0.5;
 
 	// This is the voltage from the distanceSensor. As we get closer to an obstacle, the voltage increases
 	// until we get really close. This should be calibrated so we can read the actual distance, but for

@@ -150,10 +150,10 @@ void Robot::UpdateDashboardPeriodic() {
 
 		// Debugging Talons in Follower mode
 		// They're not giving voltage or current readings, so check the PDP
-		SmartDashboard::PutNumber("PDP Current for Talon 1", pdp->GetCurrent(0));
-		SmartDashboard::PutNumber("PDP Current for Talon 2", pdp->GetCurrent(1));
-		SmartDashboard::PutNumber("PDP Current for Talon 3", pdp->GetCurrent(2));
-		SmartDashboard::PutNumber("PDP Current for Talon 4", pdp->GetCurrent(3));
+//		SmartDashboard::PutNumber("PDP Current for Talon 1", pdp->GetCurrent(0));
+//		SmartDashboard::PutNumber("PDP Current for Talon 2", pdp->GetCurrent(1));
+//		SmartDashboard::PutNumber("PDP Current for Talon 3", pdp->GetCurrent(2));
+//		SmartDashboard::PutNumber("PDP Current for Talon 4", pdp->GetCurrent(3));
 	}
 
 }

@@ -22,9 +22,9 @@ CANTalon* CANTalons::Init(int dN, char* description) {
 		}
 		m_talons[dN].voltage = t->GetOutputVoltage();
 		m_talons[dN].current = t->GetOutputCurrent();
-		sprintf(m_talons[dN].stat_label, "%sStatus", description);
-		sprintf(m_talons[dN].volt_label, "%sVolts", description);
-		sprintf(m_talons[dN].amp_label, "%sAmps", description);
+		sprintf(m_talons[dN].stat_label, "%s-Status", description);
+		sprintf(m_talons[dN].volt_label, "%s-Volts", description);
+		sprintf(m_talons[dN].amp_label, "%s-Amps", description);
 		printf("Talon %d, %s initialized, Bus Voltage: %f, Output Voltage %f\n", dN, description,
 				busvoltage,  m_talons[dN].voltage);
 	}
