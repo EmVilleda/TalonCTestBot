@@ -68,11 +68,13 @@ void RobotMap::init() {
     // Set the front talons to voltage mode
     driveSubsystemMotorControllerFrontLeft->SetControlMode(CANSpeedController::kPercentVbus);
     driveSubsystemMotorControllerFrontRight->SetControlMode(CANSpeedController::kPercentVbus);
+    driveSubsystemMotorControllerBackLeft->SetControlMode(CANSpeedController::kPercentVbus);
+    driveSubsystemMotorControllerBackRight->SetControlMode(CANSpeedController::kPercentVbus);
     // Set the back talons to follow the front talons
-    driveSubsystemMotorControllerBackLeft->SetControlMode(CANSpeedController::kFollower);
-    driveSubsystemMotorControllerBackLeft->Set(3);
-    driveSubsystemMotorControllerBackRight->SetControlMode(CANSpeedController::kFollower);
-    driveSubsystemMotorControllerBackRight->Set(1);
+//    driveSubsystemMotorControllerBackLeft->SetControlMode(CANSpeedController::kFollower);
+//    driveSubsystemMotorControllerBackLeft->Set(3);
+//    driveSubsystemMotorControllerBackRight->SetControlMode(CANSpeedController::kFollower);
+//    driveSubsystemMotorControllerBackRight->Set(1);
 
     printf("Motor controller parameters set\n");
 
@@ -86,11 +88,16 @@ void RobotMap::init() {
 	driveSubsystemLEncoder = new Encoder(2, 3, true, Encoder::k4X);
 	//lw->AddSensor("driveSubsystem", "LEncoder", driveSubsystemLEncoder);
 	driveSubsystemLEncoder->SetDistancePerPulse(1.0);
+	float a = driveSubsystemLEncoder->GetRate();
+	printf("%f\n", a);
 //    driveSubsystemLEncoder->SetPIDSourceParameter(Encoder::kRate);
 
 	driveSubsystemREncoder = new Encoder(0, 1, false, Encoder::k4X);
 	//lw->AddSensor("driveSubsystem", "REncoder", driveSubsystemREncoder);
 	driveSubsystemREncoder->SetDistancePerPulse(1.0);
+	float b = driveSubsystemREncoder->GetRate();
+	printf("%f\n", b);
+
 //    driveSubsystemREncoder->SetPIDSourceParameter(Encoder::kRate);
 
     distanceSensor = new AnalogInput(0);

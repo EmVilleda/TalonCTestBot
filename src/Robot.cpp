@@ -17,6 +17,8 @@
 DriveSubsystem* Robot::driveSubsystem = 0;
 PickupSubsystem* Robot::pickupSubsystem = 0;
 PneumaticSubsystem* Robot::pneumaticSubsystem = 0;
+DriveDistanceSubsystem* Robot::driveDistanceSubsystem = 0;
+
 OI* Robot::oi = 0;
 int Ticks = 0;
 bool Once = false;
@@ -120,10 +122,18 @@ void Robot::UpdateDashboardPeriodic() {
 //		}
 		CANTalon* canEncr = RobotMap::driveSubsystemMotorControllerFrontRight;
 		CANTalon* canEncl = RobotMap::driveSubsystemMotorControllerFrontLeft;
-		Encoder* enc = RobotMap::driveSubsystemREncoder;
+		Encoder* enc = RobotMap::driveSubsystemLEncoder;
 		if (NULL!=enc) {
-			SmartDashboard::PutNumber("EncoderSpeed",canEncr->GetSpeed());
-			SmartDashboard::PutNumber("EncoderPosition",canEncr->GetEncPosition());
+			SmartDashboard::PutNumber("LEncoderSpeed",canEncl->GetSpeed());
+			SmartDashboard::PutNumber("LEncoderPosition",canEncl->GetEncPosition());
+			SmartDashboard::PutNumber("LEncoder Raw",enc->GetDistance());
+		}
+		enc = RobotMap::driveSubsystemREncoder;
+		if (NULL!=enc) {
+			SmartDashboard::PutNumber("REncoderSpeed",canEncr->GetSpeed());
+			SmartDashboard::PutNumber("REncoderPosition",canEncr->GetEncPosition());
+			SmartDashboard::PutNumber("REncoder Raw",enc->GetDistance());
+
 		}
 		RobotMap::Ct->UpdateDashboard();
 

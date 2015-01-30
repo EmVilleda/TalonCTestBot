@@ -35,9 +35,9 @@ void Drive::Execute() {
 	if(fabs(y)>joystickValueCap){
 		y=joystickValueCap * (y/fabs(y)); // y/fabs(y) is either 1 or -1 depending on the sign of y.
 	}
-	if(fabs(x)>joystickValueCap){
-		x=joystickValueCap * (x/fabs(x)); // x/fabs(x) is either 1 or -1 depending on the sign of x.
-	}
+//	if(fabs(x)>joystickValueCap){
+//		x=joystickValueCap * (x/fabs(x)); // x/fabs(x) is either 1 or -1 depending on the sign of x.
+//	}
 
 
 	bool isDistSensorOK = RobotMap::distanceSensor->GetVoltage() <= distanceSensorThreshold;

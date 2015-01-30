@@ -19,5 +19,7 @@
 	// until we get really close. This should be calibrated so we can read the actual distance, but for
 	// now we'll just guess at a voltage threshold.
 	static float distanceSensorThreshold = 0.7;
+	// This is the distance we want to go forward in autonomous to get the tote and the robot into the
+	static float autoSetDistanceForward = 0.0;
 
 #endif /* SRC_CONSTANTS_H_ */

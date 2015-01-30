@@ -27,24 +27,24 @@ OI::OI() {
 	toggleSolenoidCommand  = new ToggleSolenoidCommand();
 	reverseSolenoidCommand = new ReverseSolenoidCommand();
 	forwardSolenoidCommand = new ForwardSolenoidCommand();
-	driveCommand = new Drive();
+	//driveCommand = new Drive();
 	
-	drivePid = new DrivePid(10000);
+	//drivePid = new DrivePid(10000);
 
 	toggleSolenoidButton = new JoystickButton(joystick, 8);
 	reverseSolenoidButton= new JoystickButton(joystick, 6);
 	forwardSolenoidButton= new JoystickButton(joystick, 5);
 
-	drivePidButton = new JoystickButton(joystick, 1);
-	driveCommandButton = new JoystickButton(joystick, 2);
+	//drivePidButton = new JoystickButton(joystick, 1);
+	//driveCommandButton = new JoystickButton(joystick, 2);
 
 	printf("buttons constructed\n");
 	toggleSolenoidButton->WhenPressed(toggleSolenoidCommand);
 	reverseSolenoidButton->WhenPressed(reverseSolenoidCommand);
 	forwardSolenoidButton->WhenPressed(forwardSolenoidCommand);
 
-	drivePidButton->WhenPressed(drivePid);
-	driveCommandButton->WhenPressed(driveCommand);
+	//drivePidButton->WhenPressed(drivePid);
+	//driveCommandButton->WhenPressed(driveCommand);
 
         // SmartDashboard Buttons
 	SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());
