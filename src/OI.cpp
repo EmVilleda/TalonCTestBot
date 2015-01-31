@@ -30,7 +30,7 @@ OI::OI() {
 	forwardSolenoidCommand = new ForwardSolenoidCommand();
 	//driveCommand = new Drive();
 	
-	driveDistance = new DriveDistanceCommand(15000);
+	driveDistance = new DriveDistanceCommand(5000);
 
 	toggleSolenoidButton = new JoystickButton(joystick, 8);
 	reverseSolenoidButton= new JoystickButton(joystick, 6);

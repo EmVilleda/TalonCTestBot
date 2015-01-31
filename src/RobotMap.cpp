@@ -71,10 +71,11 @@ void RobotMap::init() {
     driveSubsystemMotorControllerBackLeft->SetControlMode(CANSpeedController::kPercentVbus);
     driveSubsystemMotorControllerBackRight->SetControlMode(CANSpeedController::kPercentVbus);
     // Set the back talons to follow the front talons
-//    driveSubsystemMotorControllerBackLeft->SetControlMode(CANSpeedController::kFollower);
-//    driveSubsystemMotorControllerBackLeft->Set(3);
-//    driveSubsystemMotorControllerBackRight->SetControlMode(CANSpeedController::kFollower);
-//    driveSubsystemMotorControllerBackRight->Set(1);
+    driveSubsystemMotorControllerBackLeft->SetControlMode(CANSpeedController::kFollower);
+    driveSubsystemMotorControllerBackLeft->Set(3);
+    driveSubsystemMotorControllerBackLeft->EnableControl();
+    //driveSubsystemMotorControllerBackRight->SetControlMode(CANSpeedController::kFollower);
+    //driveSubsystemMotorControllerBackRight->Set(1);
 
     printf("Motor controller parameters set\n");
 

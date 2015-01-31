@@ -40,6 +40,9 @@
 class DriveDistanceCommand: public Command {
 private:
 	int distance;
+	bool isCommandDone;
+	float prevLeftEnc,prevRightEnc;
+	float distanceTraveled;
 public:
 	DriveDistanceCommand(int dist);
 	virtual void Initialize();
