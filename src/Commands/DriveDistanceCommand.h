@@ -30,6 +30,7 @@
 
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
+#include "DriveCommand.h"
 
 /**
  *
@@ -39,6 +40,7 @@
 class DriveDistanceCommand: public Command {
 private:
 	int distance;
+	DriveCommand* driveCommand;
 public:
 	DriveDistanceCommand(int dist);
 	virtual void Initialize();

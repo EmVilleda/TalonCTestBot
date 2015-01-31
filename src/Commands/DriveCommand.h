@@ -12,18 +12,17 @@
 #ifndef DRIVE_H
 #define DRIVE_H
 
-
-#include "Commands/Subsystem.h"
 #include "../Robot.h"
+
 
 /**
  *
  *
  * @author ExampleAuthor
  */
-class Drive: public Command {
+class DriveCommand: public Command {
 public:
-	Drive();
+	DriveCommand();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

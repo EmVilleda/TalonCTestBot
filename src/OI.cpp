@@ -11,13 +11,13 @@
 #include "SmartDashboard/SmartDashboard.h"
 #include "Commands/ArbitraryCommand.h"
 #include "Commands/AutonomousCommand.h"
-#include "Commands/Drive.h"
 #include "Commands/DriveDistanceCommand.h"
 #include "Commands/DrivePid.h"
 #include "Commands/ToggleSolenoidCommand.h"
 #include "Commands/ReverseSolenoidCommand.h"
 #include "Commands/ForwardSolenoidCommand.h"
 #include "OI.h"
+#include "Commands/DriveCommand.h"
 
 OI::OI() {
 	// Process operator interface input here.
@@ -50,7 +50,7 @@ OI::OI() {
         // SmartDashboard Buttons
 	SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());
 
-	SmartDashboard::PutData("Drive", new Drive());
+	SmartDashboard::PutData("Drive", new DriveCommand());
 
 //	SmartDashboard::PutData("ArbitraryCommand", new ArbitraryCommand());
 
