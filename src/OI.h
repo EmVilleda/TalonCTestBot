@@ -13,11 +13,13 @@ private:
 	JoystickButton* reverseSolenoidButton;
 	JoystickButton* forwardSolenoidButton;
 	JoystickButton* driveDistanceButton;
+	JoystickButton* drivePidButton;
 	//JoystickButton* driveCommandButton;
 
 	Command* reverseSolenoidCommand;
 	Command* forwardSolenoidCommand;
 	Command* driveDistance;
+	Command* drivePidCommand;
 	//Command* driveCommand;
 
 public:

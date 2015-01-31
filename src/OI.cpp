@@ -18,6 +18,7 @@
 #include "Commands/ForwardSolenoidCommand.h"
 #include "OI.h"
 #include "Commands/DriveCommand.h"
+#include "Commands/DrivePid.h"
 
 OI::OI() {
 	// Process operator interface input here.
@@ -28,6 +29,8 @@ OI::OI() {
 	toggleSolenoidCommand  = new ToggleSolenoidCommand();
 	reverseSolenoidCommand = new ReverseSolenoidCommand();
 	forwardSolenoidCommand = new ForwardSolenoidCommand();
+
+	drivePidCommand = new DrivePid(5000);
 	//driveCommand = new Drive();
 	
 	driveDistance = new DriveDistanceCommand(5000);
@@ -37,7 +40,8 @@ OI::OI() {
 	forwardSolenoidButton= new JoystickButton(joystick, 5);
 
 	driveDistanceButton = new JoystickButton(joystick, 1);
-	//driveCommandButton = new JoystickButton(joystick, 2);
+
+	drivePidButton = new JoystickButton(joystick, 2);
 
 	printf("buttons constructed\n");
 	toggleSolenoidButton->WhenPressed(toggleSolenoidCommand);
@@ -45,6 +49,8 @@ OI::OI() {
 	forwardSolenoidButton->WhenPressed(forwardSolenoidCommand);
 
 	driveDistanceButton->WhenPressed(driveDistance);
+
+	drivePidButton->WhenPressed(drivePidCommand);
 	//driveCommandButton->WhenPressed(driveCommand);
 
         // SmartDashboard Buttons

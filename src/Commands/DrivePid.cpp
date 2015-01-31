@@ -25,20 +25,44 @@ DrivePid::DrivePid(int _ticks) {
 // Called just before this Command runs the first time
 void DrivePid::Initialize() {
 	SetTimeout(15);  // set 15 second timeout. Good enough?
+	double p = 1.0;
+	double i = 0.0;
+	double d = 0.0;
+	double f = 1.0;
+
+	//SO MANY API CALLS AAAAARGH
     RobotMap::driveSubsystemMotorControllerFrontLeft->SetControlMode(CANSpeedController::kPosition);
-    RobotMap::driveSubsystemMotorControllerFrontLeft->SetPID(1.0,0.0,0.0);
+    RobotMap::driveSubsystemMotorControllerFrontLeft->SetPID(p,i,d);
+    RobotMap::driveSubsystemMotorControllerFrontLeft->SetF(f);
+    RobotMap::driveSubsystemMotorControllerFrontLeft->ClearIaccum();
+    RobotMap::driveSubsystemMotorControllerFrontLeft->SetPosition(0.0);
+    RobotMap::driveSubsystemMotorControllerFrontLeft->SetFeedbackDevice(CANTalon::QuadEncoder);
+    //RobotMap::driveSubsystemMotorControllerFrontLeft->
+
     RobotMap::driveSubsystemMotorControllerFrontRight->SetControlMode(CANSpeedController::kPosition);
-    RobotMap::driveSubsystemMotorControllerFrontRight->SetPID(1.0,0.0,0.0);
+    RobotMap::driveSubsystemMotorControllerFrontRight->SetPID(p,i,d);
+    RobotMap::driveSubsystemMotorControllerFrontRight->SetF(f);
+    RobotMap::driveSubsystemMotorControllerFrontRight->ClearIaccum();
+    RobotMap::driveSubsystemMotorControllerFrontRight->SetPosition(0.0);
+    RobotMap::driveSubsystemMotorControllerFrontRight->SetFeedbackDevice(CANTalon::QuadEncoder);
+    //RobotMap::driveSubsystemMotorControllerFrontRight->
 }
 
 // Called repeatedly when this Command is scheduled to run
 void DrivePid::Execute(){
-	RobotMap::driveSubsystemMotorControllerFrontLeft->SetPosition(ticks);
+	RobotMap::driveSubsystemMotorControllerFrontLeft->Set(ticks);
+	RobotMap::driveSubsystemMotorControllerFrontRight->Set(ticks);
+
+	double currPos = RobotMap::driveSubsystemMotorControllerFrontLeft->GetPosition();
+	double toGo = ticks-currPos;
+	if(toGo < 0.02) isFinished=true;
+
+	printf("Executing DrivePid!");
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool DrivePid::IsFinished() {
-	return true;
+	return isFinished;
 }
 
 // Called once after isFinished returns true
