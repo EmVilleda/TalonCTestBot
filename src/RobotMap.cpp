@@ -59,9 +59,9 @@ void RobotMap::init() {
 
     // Invert the motors here to to get the appropriate behavior from the two stage gearbox
     robotDrive->SetInvertedMotor(RobotDrive::kFrontLeftMotor, false);
-    robotDrive->SetInvertedMotor(RobotDrive::kRearLeftMotor, false);
+    //robotDrive->SetInvertedMotor(RobotDrive::kRearLeftMotor, false);
     robotDrive->SetInvertedMotor(RobotDrive::kFrontRightMotor, false);
-    robotDrive->SetInvertedMotor(RobotDrive::kRearRightMotor, false);
+    //robotDrive->SetInvertedMotor(RobotDrive::kRearRightMotor, false);
 
     // Set the front talons to voltage mode
     driveSubsystemMotorControllerFrontLeft->SetControlMode(CANSpeedController::kPercentVbus);
@@ -74,7 +74,11 @@ void RobotMap::init() {
     driveSubsystemMotorControllerBackLeft->EnableControl();
     driveSubsystemMotorControllerBackRight->SetControlMode(CANSpeedController::kFollower);
     driveSubsystemMotorControllerBackRight->Set(1);
-    driveSubsystemMotorControllerBackLeft->EnableControl();
+    driveSubsystemMotorControllerBackRight->EnableControl();
+
+    printf("Back Left %d\n", driveSubsystemMotorControllerBackLeft->GetControlMode());
+    printf("Back Right %d\n", driveSubsystemMotorControllerBackRight->GetControlMode());
+
 
     printf("Motor controller parameters set\n");
 
@@ -89,14 +93,14 @@ void RobotMap::init() {
 	//lw->AddSensor("driveSubsystem", "LEncoder", driveSubsystemLEncoder);
 	driveSubsystemLEncoder->SetDistancePerPulse(1.0);
 	float a = driveSubsystemLEncoder->GetRate();
-	printf("%f\n", a);
+	//printf("%f\n", a);
 //    driveSubsystemLEncoder->SetPIDSourceParameter(Encoder::kRate);
 
 	driveSubsystemREncoder = new Encoder(0, 1, false, Encoder::k4X);
 	//lw->AddSensor("driveSubsystem", "REncoder", driveSubsystemREncoder);
 	driveSubsystemREncoder->SetDistancePerPulse(1.0);
 	float b = driveSubsystemREncoder->GetRate();
-	printf("%f\n", b);
+	//printf("%f\n", b);
 
 //    driveSubsystemREncoder->SetPIDSourceParameter(Encoder::kRate);
 

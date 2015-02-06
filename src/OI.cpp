@@ -35,13 +35,13 @@ OI::OI() {
 	
 	driveDistance = new DriveDistanceCommand(5000);
 
-	toggleSolenoidButton = new JoystickButton(joystick, 8);
-	reverseSolenoidButton= new JoystickButton(joystick, 6);
-	forwardSolenoidButton= new JoystickButton(joystick, 5);
+	toggleSolenoidButton = new JoystickButton(joystick, 8);//menu
+	reverseSolenoidButton= new JoystickButton(joystick, 6);//r bumper
+	forwardSolenoidButton= new JoystickButton(joystick, 5);//l bumper
+//sample comment. Ignore. Not iMportant
+	driveDistanceButton = new JoystickButton(joystick, 1);//A
 
-	driveDistanceButton = new JoystickButton(joystick, 1);
-
-	drivePidButton = new JoystickButton(joystick, 2);
+	drivePidButton = new JoystickButton(joystick, 2);//B
 
 	printf("buttons constructed\n");
 	toggleSolenoidButton->WhenPressed(toggleSolenoidCommand);
@@ -50,7 +50,7 @@ OI::OI() {
 
 	driveDistanceButton->WhenPressed(driveDistance);
 
-	drivePidButton->WhenPressed(drivePidCommand);
+//	drivePidButton->WhenPressed(drivePidCommand);
 	//driveCommandButton->WhenPressed(driveCommand);
 
         // SmartDashboard Buttons

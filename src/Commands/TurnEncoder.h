@@ -17,7 +17,7 @@
 #include "../Robot.h"
 #include "../Constants.h"
 
-#define ENCODERFULLREVOLUTION (encoderTicksPerRevo*robotDiameter/wheelDiameter);
+//#define ENCODERFULLREVOLUTION (encoderTicksPerRevo*robotDiameter/wheelDiameter)
 
 /**
  * This Command will drive forward based on a PID Loop in the Talons
@@ -38,6 +38,7 @@ private:
 	int targetEncTicks, currentTime;
 	bool isFinished;
 	int leftStartPos,rightStartPos;
+	float encoderFullRevolutions;
 };
 
 #endif

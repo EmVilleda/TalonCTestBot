@@ -24,7 +24,7 @@ DrivePid::DrivePid(int _ticks) {
 
 // Called just before this Command runs the first time
 void DrivePid::Initialize() {
-	SetTimeout(15);  // set 15 second timeout. Good enough?
+	SetTimeout(5);  // set 15 second timeout. Good enough?
 	double p = 1.0;
 	double i = 0.0;
 	double d = 0.0;
