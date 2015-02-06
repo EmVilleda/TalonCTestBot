@@ -8,9 +8,8 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
-
 #include "DriveLightSensor.h"
-#include "../Robot.h"
+#include "../Constants.h"
 
 DriveLightSensor::DriveLightSensor() {
 	// Use requires() here to declare subsystem dependencies
@@ -31,7 +30,7 @@ void DriveLightSensor::Initialize() {
 void DriveLightSensor::Execute(){
 	bool isDistSensorOK = RobotMap::distanceSensor->GetVoltage() <= distanceSensorThreshold;
 	if (!isDistSensorOK) isFinished=true;
-	Robot::driveSubsystem->robotDrive->ArcadeDrive(-0.3, 0, true);
+	else Robot::driveSubsystem->robotDrive->ArcadeDrive(-0.3, 0, true);
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -41,7 +40,7 @@ bool DriveLightSensor::IsFinished() {
 
 // Called once after isFinished returns true
 void DriveLightSensor::End() {
-	
+	Robot::driveCommand->Start();
 }
 
 // Called when another command which requires one or more of the same
