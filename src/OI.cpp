@@ -11,11 +11,14 @@
 #include "SmartDashboard/SmartDashboard.h"
 #include "Commands/ArbitraryCommand.h"
 #include "Commands/AutonomousCommand.h"
-#include "Commands/Drive.h"
+#include "Commands/DriveDistanceCommand.h"
+#include "Commands/DrivePid.h"
 #include "Commands/ToggleSolenoidCommand.h"
 #include "Commands/ReverseSolenoidCommand.h"
 #include "Commands/ForwardSolenoidCommand.h"
 #include "OI.h"
+#include "Commands/DriveCommand.h"
+#include "Commands/DrivePid.h"
 
 OI::OI() {
 	// Process operator interface input here.
@@ -26,19 +29,33 @@ OI::OI() {
 	toggleSolenoidCommand  = new ToggleSolenoidCommand();
 	reverseSolenoidCommand = new ReverseSolenoidCommand();
 	forwardSolenoidCommand = new ForwardSolenoidCommand();
+
+	drivePidCommand = new DrivePid(5000);
+	//driveCommand = new Drive();
 	
-	toggleSolenoidButton = new JoystickButton(joystick, 8);
-	reverseSolenoidButton= new JoystickButton(joystick, 6);
-	forwardSolenoidButton= new JoystickButton(joystick, 5);
+	driveDistance = new DriveDistanceCommand(5000);
+
+	toggleSolenoidButton = new JoystickButton(joystick, 8);//menu
+	reverseSolenoidButton= new JoystickButton(joystick, 6);//r bumper
+	forwardSolenoidButton= new JoystickButton(joystick, 5);//l bumper
+	driveDistanceButton = new JoystickButton(joystick, 1);//A
+
+	drivePidButton = new JoystickButton(joystick, 2);//B
+
 	printf("buttons constructed\n");
 	toggleSolenoidButton->WhenPressed(toggleSolenoidCommand);
 	reverseSolenoidButton->WhenPressed(reverseSolenoidCommand);
 	forwardSolenoidButton->WhenPressed(forwardSolenoidCommand);
 
+	driveDistanceButton->WhenPressed(driveDistance);
+
+//	drivePidButton->WhenPressed(drivePidCommand);
+	//driveCommandButton->WhenPressed(driveCommand);
+
         // SmartDashboard Buttons
 	SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());
 
-	SmartDashboard::PutData("Drive", new Drive());
+	SmartDashboard::PutData("Drive", new DriveCommand());
 
 //	SmartDashboard::PutData("ArbitraryCommand", new ArbitraryCommand());
 
