@@ -22,4 +22,13 @@
 	// This is the distance we want to go forward in autonomous to get the tote and the robot into the
 	static float autoSetDistanceForward = 0.0;
 
+	// The number of encoder ticks which correspond to 1 revolution of a wheel
+	static float encoderTicksPerRevo = 1024;
+
+	// The diameter of the robot
+	static float robotDiameter = 25.3125;
+
+	// The diameter of the wheel
+	static float wheelDiameter = 6.25;
+
 #endif /* SRC_CONSTANTS_H_ */

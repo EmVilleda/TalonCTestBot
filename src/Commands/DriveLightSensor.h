@@ -14,7 +14,7 @@
 
 
 #include "Commands/Subsystem.h"
-#include "../Robot.h"
+#include "WPILib.h"
 
 /**
  * This Command will do stuff
@@ -23,14 +23,13 @@
  */
 class DriveLightSensor: public Command {
 public:
-	DriveLightSensor(int _ticks);
+	DriveLightSensor();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
 private:
-	int ticks, currentTime;
 	bool isFinished;
 };
 
