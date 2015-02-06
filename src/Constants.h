@@ -25,10 +25,10 @@
 	// The number of encoder ticks which correspond to 1 revolution of a wheel
 	static float encoderTicksPerRevo = 1024;
 
-	// The diameter of the robot
+	// The diameter of the robot (middle of wheel to middle of wheel), in
 	static float robotDiameter = 25.3125;
 
-	// The diameter of the wheel
+	// The diameter of the wheels, in
 	static float wheelDiameter = 6.25;
 
 #endif /* SRC_CONSTANTS_H_ */
