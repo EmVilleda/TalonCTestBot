@@ -24,7 +24,8 @@ DrivePid::DrivePid(int _ticks) {
 
 // Called just before this Command runs the first time
 void DrivePid::Initialize() {
-	SetTimeout(5);  // set 15 second timeout. Good enough?
+	firstTime=true;
+	SetTimeout(15);  // set 15 second timeout. Good enough?
 	double p = 1.0;
 	double i = 0.0;
 	double d = 0.0;
@@ -33,31 +34,39 @@ void DrivePid::Initialize() {
 	//SO MANY API CALLS AAAAARGH
     RobotMap::driveSubsystemMotorControllerFrontLeft->SetControlMode(CANSpeedController::kPosition);
     RobotMap::driveSubsystemMotorControllerFrontLeft->SetPID(p,i,d);
-    RobotMap::driveSubsystemMotorControllerFrontLeft->SetF(f);
+//    RobotMap::driveSubsystemMotorControllerFrontLeft->SetF(f);
     RobotMap::driveSubsystemMotorControllerFrontLeft->ClearIaccum();
     RobotMap::driveSubsystemMotorControllerFrontLeft->SetPosition(0.0);
     RobotMap::driveSubsystemMotorControllerFrontLeft->SetFeedbackDevice(CANTalon::QuadEncoder);
-    //RobotMap::driveSubsystemMotorControllerFrontLeft->
+    RobotMap::driveSubsystemMotorControllerFrontLeft->SetSensorDirection(true);
 
     RobotMap::driveSubsystemMotorControllerFrontRight->SetControlMode(CANSpeedController::kPosition);
     RobotMap::driveSubsystemMotorControllerFrontRight->SetPID(p,i,d);
-    RobotMap::driveSubsystemMotorControllerFrontRight->SetF(f);
+//    RobotMap::driveSubsystemMotorControllerFrontRight->SetF(f);
     RobotMap::driveSubsystemMotorControllerFrontRight->ClearIaccum();
     RobotMap::driveSubsystemMotorControllerFrontRight->SetPosition(0.0);
     RobotMap::driveSubsystemMotorControllerFrontRight->SetFeedbackDevice(CANTalon::QuadEncoder);
-    //RobotMap::driveSubsystemMotorControllerFrontRight->
+    RobotMap::driveSubsystemMotorControllerFrontRight->SetSensorDirection(true);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void DrivePid::Execute(){
+	if(firstTime){
+		Initialize();
+		firstTime=false;
+	}
 	RobotMap::driveSubsystemMotorControllerFrontLeft->Set(ticks);
 	RobotMap::driveSubsystemMotorControllerFrontRight->Set(ticks);
 
-	double currPos = RobotMap::driveSubsystemMotorControllerFrontLeft->GetPosition();
+	double currPos = -(RobotMap::driveSubsystemMotorControllerFrontLeft->GetPosition());
 	double toGo = ticks-currPos;
 	if(toGo < 0.02) isFinished=true;
+	SmartDashboard::PutNumber("Drive PID", currPos);
 
-	printf("Executing DrivePid!");
+	//double pidErrVal = RobotMap::driveSubsystemMotorControllerFrontLeft->
+	//SmartDashboard::PutNumber("Drive PID Error", pidErrVal);
+
+	printf("Executing DrivePid!\n");
 }
 
 // Make this return true when this Command no longer needs to run execute()

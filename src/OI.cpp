@@ -30,7 +30,7 @@ OI::OI() {
 	reverseSolenoidCommand = new ReverseSolenoidCommand();
 	forwardSolenoidCommand = new ForwardSolenoidCommand();
 
-	drivePidCommand = new DrivePid(5000);
+	drivePidCommand = new DrivePid(1000);
 	//driveCommand = new Drive();
 	
 	driveDistance = new DriveDistanceCommand(5000);
@@ -50,8 +50,8 @@ OI::OI() {
 
 	driveDistanceButton->WhenPressed(driveDistance);
 
-//	drivePidButton->WhenPressed(drivePidCommand);
-	//driveCommandButton->WhenPressed(driveCommand);
+	drivePidButton->WhenPressed(drivePidCommand);
+//	driveCommandButton->WhenPressed(driveCommand);
 
         // SmartDashboard Buttons
 	SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());
