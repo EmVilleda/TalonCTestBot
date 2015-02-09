@@ -92,14 +92,14 @@ void RobotMap::init() {
 	driveSubsystemLEncoder = new Encoder(2, 3, true, Encoder::k4X);
 	//lw->AddSensor("driveSubsystem", "LEncoder", driveSubsystemLEncoder);
 	driveSubsystemLEncoder->SetDistancePerPulse(1.0);
-	float a = driveSubsystemLEncoder->GetRate();
+	//float a = driveSubsystemLEncoder->GetRate();
 	//printf("%f\n", a);
 //    driveSubsystemLEncoder->SetPIDSourceParameter(Encoder::kRate);
 
 	driveSubsystemREncoder = new Encoder(0, 1, false, Encoder::k4X);
 	//lw->AddSensor("driveSubsystem", "REncoder", driveSubsystemREncoder);
 	driveSubsystemREncoder->SetDistancePerPulse(1.0);
-	float b = driveSubsystemREncoder->GetRate();
+	//float b = driveSubsystemREncoder->GetRate();
 	//printf("%f\n", b);
 
 //    driveSubsystemREncoder->SetPIDSourceParameter(Encoder::kRate);

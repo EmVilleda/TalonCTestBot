@@ -30,6 +30,9 @@ OI::OI() {
 	reverseSolenoidCommand = new ReverseSolenoidCommand();
 	forwardSolenoidCommand = new ForwardSolenoidCommand();
 
+	driverStation = DriverStation::GetInstance();
+	printf("Joystick 0 has %d axes", driverStation->GetStickAxisCount(0));
+
 	drivePidCommand = new DrivePid(5000);
 	//driveCommand = new Drive();
 	

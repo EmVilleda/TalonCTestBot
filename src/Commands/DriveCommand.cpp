@@ -33,7 +33,12 @@ void DriveCommand::Execute() {
 	// Note that the sense of Y is negative, That is, if one pushes the joystick forward, Y is negative.
 	// So a negative y value means we want to drive forward.
 	// The ArcadeDrive method seems to expect this.
-	float x = Robot::oi->joystick->GetRawAxis(4);
+	float x;
+	// adapt for the kind of joystick we have. Most non-console (e.g. XBox, PS)
+	// only have a single joystick
+	unsigned int count = Robot::oi->driverStation->GetStickAxisCount(0);
+	if (count > 4) x = Robot::oi->joystick->GetRawAxis(4);
+	else x = Robot::oi->joystick->GetX();
 
 	// Cap our joystick positions for testing
 	if (y > joystickValueCap) y = joystickValueCap;
