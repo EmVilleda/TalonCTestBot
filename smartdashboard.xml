@@ -1,115 +1,139 @@
 <xml version="1.0">
 <dashboard>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="415" y="98"/>
+		<width>319</width>
+		<property name="Text" value="-> -> -> -> -> -> -> -> -> -> -> -> "/>
+	</static-widget>
+	<widget field="PDP Amps Talons 1 & 2" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="48"/>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="583" y="128"/>
+		<property name="Text" value="CAN 1"/>
+		<property name="Horizontal Alignment" value="Left"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="416" y="124"/>
+		<property name="Text" value="CAN 4"/>
+		<property name="Horizontal Alignment" value="Left"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.ConnectionIndicator">
+		<location x="8" y="7"/>
+		<width>38</width>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="587" y="10"/>
+		<property name="Text" value="CAN 3"/>
+		<property name="Horizontal Alignment" value="Left"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="414" y="11"/>
+		<property name="Text" value="CAN 2"/>
+		<property name="Horizontal Alignment" value="Left"/>
+	</static-widget>
 	<widget field="FrontRight-Amps" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.ProgressBar">
-		<location x="585" y="147"/>
-		<property name="Maximum" value="15.0"/>
+		<location x="585" y="176"/>
+		<property name="Maximum" value="3.0"/>
 	</widget>
 	<widget field="BackRight-Amps" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.ProgressBar">
-		<location x="416" y="148"/>
-		<property name="Maximum" value="15.0"/>
-		<property name="Minimum" value="-15.0"/>
+		<location x="416" y="176"/>
+		<property name="Maximum" value="3.0"/>
 	</widget>
 	<widget field="FrontRight-Volts" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.ProgressBar">
-		<location x="585" y="114"/>
-		<property name="Maximum" value="12.0"/>
-		<property name="Minimum" value="-12.0"/>
+		<location x="585" y="143"/>
+		<property name="Maximum" value="8.0"/>
+		<property name="Minimum" value="-8.0"/>
 	</widget>
 	<widget field="BackRight-Volts" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.ProgressBar">
-		<location x="416" y="114"/>
-		<property name="Maximum" value="12.0"/>
-		<property name="Minimum" value="-12.0"/>
+		<location x="416" y="142"/>
+		<height>32</height>
+		<property name="Maximum" value="8.0"/>
+		<property name="Minimum" value="-8.0"/>
 	</widget>
 	<widget field="FrontRight-Status" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.BooleanBox">
-		<location x="640" y="99"/>
+		<location x="635" y="126"/>
 	</widget>
 	<widget field="BackRight-Status" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.BooleanBox">
-		<location x="478" y="100"/>
+		<location x="472" y="128"/>
 	</widget>
 	<widget field="FrontLeft-Amps" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.ProgressBar">
 		<location x="585" y="56"/>
-		<property name="Maximum" value="15.0"/>
-		<property name="Minimum" value="15.0"/>
+		<property name="Maximum" value="3.0"/>
 	</widget>
 	<widget field="FrontLeft-Volts" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.ProgressBar">
-		<location x="587" y="27"/>
-		<property name="Maximum" value="12.0"/>
-		<property name="Minimum" value="-12.0"/>
+		<location x="589" y="29"/>
+		<property name="Maximum" value="8.0"/>
+		<property name="Minimum" value="-8.0"/>
 	</widget>
 	<widget field="FrontLeft-Status" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.BooleanBox">
 		<location x="641" y="15"/>
 	</widget>
 	<widget field="BackLeft-Amps" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.ProgressBar">
 		<location x="415" y="56"/>
-		<property name="Maximum" value="15.0"/>
-		<property name="Minimum" value="-15.0"/>
+		<property name="Maximum" value="3.0"/>
 	</widget>
 	<widget field="BackLeft-Volts" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.ProgressBar">
 		<location x="415" y="28"/>
-		<property name="Maximum" value="12.0"/>
-		<property name="Minimum" value="-12.0"/>
+		<property name="Maximum" value="8.0"/>
+		<property name="Minimum" value="-8.0"/>
 	</widget>
 	<widget field="BackLeft-Status" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.BooleanBox">
 		<location x="478" y="14"/>
 	</widget>
 	<widget field="TeleopPeriodic" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="186" y="31"/>
+		<location x="49" y="27"/>
 	</widget>
 	<widget field="TeleopInit" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="207" y="8"/>
+		<location x="70" y="3"/>
 	</widget>
 	<widget field="REncoderSpeed" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="181" y="124"/>
+		<location x="180" y="116"/>
 	</widget>
 	<widget field="REncoderPosition" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="173" y="94"/>
 	</widget>
 	<widget field="REncoder Raw" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="184" y="64"/>
-	</widget>
-	<widget field="PDP Current for Talon 4" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="371" y="241"/>
-	</widget>
-	<widget field="PDP Current for Talon 3" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="579" y="242"/>
-	</widget>
-	<widget field="PDP Current for Talon 2" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="370" y="212"/>
-	</widget>
-	<widget field="PDP Current for Talon 1" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="579" y="210"/>
+		<location x="186" y="71"/>
 	</widget>
 	<widget field="LEncoderSpeed" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="7" y="122"/>
+		<location x="8" y="115"/>
 	</widget>
 	<widget field="LEncoderPosition" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="-3" y="93"/>
+		<location x="1" y="92"/>
 	</widget>
 	<widget field="LEncoder Raw" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="9" y="65"/>
+		<location x="14" y="69"/>
 	</widget>
 	<widget field="Drive" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="1" y="25"/>
+		<location x="12" y="240"/>
 	</widget>
 	<widget field="Drive Distance" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="29" y="251"/>
+		<location x="12" y="209"/>
 	</widget>
 	<widget field="Drive Command Y" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="15" y="226"/>
+		<location x="0" y="179"/>
 	</widget>
 	<widget field="Drive Command X" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="13" y="204"/>
+		<location x="2" y="153"/>
 		<height>21</height>
 	</widget>
 	<widget field="DistanceSensorVoltage" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="174" y="187"/>
+		<location x="173" y="179"/>
 	</widget>
 	<widget field="ColorSensorVoltage" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="178" y="156"/>
+		<location x="188" y="156"/>
 	</widget>
 	<widget field="Autonomous Command" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="0"/>
+		<location x="124" y="238"/>
 	</widget>
 </dashboard>
 <live-window>
 </live-window>
+	<hidden field="PDP Current for Talon 1"/>
+	<hidden field="PDP Current for Talon 3"/>
+	<hidden field="PDP Current for Talon 2"/>
+	<hidden field="Total Watts"/>
+	<hidden field="PDP Current for Talon 4"/>
+	<hidden field="PDP Amps Talons 3 & 4"/>
 </xml>
