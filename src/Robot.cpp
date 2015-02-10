@@ -165,8 +165,8 @@ void Robot::UpdateDashboardPeriodic() {
 		// Debugging Talons in Follower mode
 		// They're not giving voltage or current readings, so check the PDP
 		pdp->UpdateTable();
-		//SmartDashboard::PutNumber("PDP Amps Talons 1 & 2", pdp->GetCurrent(0));
-		//SmartDashboard::PutNumber("PDP Amps Talons 3 & 4", pdp->GetCurrent(2));
+		//SmartDashboard::PutNumber("PDP Amps Talons 1 and 2", pdp->GetCurrent(0));
+		//SmartDashboard::PutNumber("PDP Amps Talons 3 and 4", pdp->GetCurrent(2));
 		//SmartDashboard::PutNumber("Total Watts", pdp->GetTotalPower());
 
 	}
