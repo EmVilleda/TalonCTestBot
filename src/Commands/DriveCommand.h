@@ -14,6 +14,10 @@
 
 #include "../Robot.h"
 
+// This is the voltage from the distanceSensor. As we get closer to an obstacle, the voltage increases
+// until we get really close. This should be calibrated so we can read the actual distance, but for
+// now we'll just guess at a voltage threshold.
+
 
 /**
  *

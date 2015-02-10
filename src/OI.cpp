@@ -33,18 +33,17 @@ OI::OI() {
 	driverStation = DriverStation::GetInstance();
 	printf("Joystick 0 has %d axes", driverStation->GetStickAxisCount(0));
 
-	drivePidCommand = new DrivePid(5000);
-	//driveCommand = new Drive();
+	drivePidCommand = new DrivePid(1000);
 	
-	driveDistance = new DriveDistanceCommand(5000);
+	driveDistance = new DriveDistanceCommand(1000);
 
-	toggleSolenoidButton = new JoystickButton(joystick, 8);//menu
-	reverseSolenoidButton= new JoystickButton(joystick, 6);//r bumper
-	forwardSolenoidButton= new JoystickButton(joystick, 5);//l bumper
-//sample comment. Ignore. Not iMportant
-	driveDistanceButton = new JoystickButton(joystick, 1);//A
+	toggleSolenoidButton = new JoystickButton(joystick, 8);		// menu
+	reverseSolenoidButton= new JoystickButton(joystick, 6);		// r bumper
+	forwardSolenoidButton= new JoystickButton(joystick, 5);		// l bumper
 
-	drivePidButton = new JoystickButton(joystick, 2);//B
+	driveDistanceButton = new JoystickButton(joystick, 1);		//A
+
+	drivePidButton = new JoystickButton(joystick, 2);			//B
 
 	printf("buttons constructed\n");
 	toggleSolenoidButton->WhenPressed(toggleSolenoidCommand);
@@ -53,10 +52,9 @@ OI::OI() {
 
 	driveDistanceButton->WhenPressed(driveDistance);
 
-//	drivePidButton->WhenPressed(drivePidCommand);
-	//driveCommandButton->WhenPressed(driveCommand);
+	drivePidButton->WhenPressed(drivePidCommand);
 
-        // SmartDashboard Buttons
+    // SmartDashboard Buttons
 	SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());
 
 	SmartDashboard::PutData("Drive", new DriveCommand());

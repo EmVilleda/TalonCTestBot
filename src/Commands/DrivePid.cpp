@@ -31,29 +31,29 @@ void DrivePid::Initialize() {
 	double f = 1.0;
 
 	//SO MANY API CALLS AAAAARGH
-    RobotMap::driveSubsystemMotorControllerFrontLeft->SetControlMode(CANSpeedController::kPosition);
-    RobotMap::driveSubsystemMotorControllerFrontLeft->SetPID(p,i,d);
-    RobotMap::driveSubsystemMotorControllerFrontLeft->SetF(f);
-    RobotMap::driveSubsystemMotorControllerFrontLeft->ClearIaccum();
-    RobotMap::driveSubsystemMotorControllerFrontLeft->SetPosition(0.0);
-    RobotMap::driveSubsystemMotorControllerFrontLeft->SetFeedbackDevice(CANTalon::QuadEncoder);
+    RobotMap::driveFrontLeft->SetControlMode(CANSpeedController::kPosition);
+    RobotMap::driveFrontLeft->SetPID(p,i,d);
+    RobotMap::driveFrontLeft->SetF(f);
+    RobotMap::driveFrontLeft->ClearIaccum();
+    RobotMap::driveFrontLeft->SetPosition(0.0);
+    RobotMap::driveFrontLeft->SetFeedbackDevice(CANTalon::QuadEncoder);
     //RobotMap::driveSubsystemMotorControllerFrontLeft->
 
-    RobotMap::driveSubsystemMotorControllerFrontRight->SetControlMode(CANSpeedController::kPosition);
-    RobotMap::driveSubsystemMotorControllerFrontRight->SetPID(p,i,d);
-    RobotMap::driveSubsystemMotorControllerFrontRight->SetF(f);
-    RobotMap::driveSubsystemMotorControllerFrontRight->ClearIaccum();
-    RobotMap::driveSubsystemMotorControllerFrontRight->SetPosition(0.0);
-    RobotMap::driveSubsystemMotorControllerFrontRight->SetFeedbackDevice(CANTalon::QuadEncoder);
+    RobotMap::driveFrontRight->SetControlMode(CANSpeedController::kPosition);
+    RobotMap::driveFrontRight->SetPID(p,i,d);
+    RobotMap::driveFrontRight->SetF(f);
+    RobotMap::driveFrontRight->ClearIaccum();
+    RobotMap::driveFrontRight->SetPosition(0.0);
+    RobotMap::driveFrontRight->SetFeedbackDevice(CANTalon::QuadEncoder);
     //RobotMap::driveSubsystemMotorControllerFrontRight->
 }
 
 // Called repeatedly when this Command is scheduled to run
 void DrivePid::Execute(){
-	RobotMap::driveSubsystemMotorControllerFrontLeft->Set(ticks);
-	RobotMap::driveSubsystemMotorControllerFrontRight->Set(ticks);
+	RobotMap::driveFrontLeft->Set(ticks);
+	RobotMap::driveFrontRight->Set(ticks);
 
-	double currPos = RobotMap::driveSubsystemMotorControllerFrontLeft->GetPosition();
+	double currPos = RobotMap::driveFrontLeft->GetPosition();
 	double toGo = ticks-currPos;
 	if(toGo < 0.02) isFinished=true;
 

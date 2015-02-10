@@ -9,9 +9,15 @@
 // it from being updated in the future.
 
 #include "DriveCommand.h"
-
-#include "../Constants.h"
 #include "../Robot.h"
+
+// The following will limit the max drive speed
+// For competition, this should be 1.0
+// Until then, we'll keep it slow.
+static float joystickValueCap = 1.0;
+
+// This is the distance we want to go forward in autonomous to get the tote and the robot into the
+//static float autoSetDistanceForward = 0.0;
 
 DriveCommand::DriveCommand() {
 	// Use requires() here to declare subsystem dependencies
@@ -46,7 +52,8 @@ void DriveCommand::Execute() {
 	if (x > joystickValueCap) x = joystickValueCap;
 	else if (x < -joystickValueCap) x = -joystickValueCap;
 
-	bool isDistSensorOK = RobotMap::distanceSensor->GetVoltage() <= distanceSensorThreshold;
+	bool isDistSensorOK =
+			RobotMap::distanceSensor->GetVoltage() <= Robot::driveSubsystem->distanceSensorThreshold;
 	// If the distanceSensor voltage is > 0.6, we are close enough to the target.
 	// Only allow us to drive backward which means positive y
 	if (isDistSensorOK || (!isDistSensorOK && y>0)) {

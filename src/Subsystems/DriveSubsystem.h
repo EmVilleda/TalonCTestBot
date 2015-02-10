@@ -38,6 +38,7 @@ public:
 	void InitDefaultCommand();
 	double GetLeftEncoderPosition();
 	double GetRightEncoderPosition();
+	float distanceSensorThreshold = 0.7;
 
 };
 

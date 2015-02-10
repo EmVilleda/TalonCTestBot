@@ -44,6 +44,10 @@ void Robot::RobotInit() {
 	lw = LiveWindow::GetInstance();
 
 	pdp = new PowerDistributionPanel();
+	pdp->UpdateTable();
+	printf("PDP voltage %f, engergy %f.\n",
+		   pdp->GetVoltage(), pdp->GetTotalEnergy());
+
 
 //	lEncoder = RobotMap::driveSubsystemLEncoder;
 //	rEncoder = RobotMap::driveSubsystemREncoder;
@@ -89,8 +93,8 @@ void Robot::TeleopInit() {
 		autonomousCommand->Cancel();
 	std::cout << "TeleopInit\n";
 	// Reset the Talons to default modes
-    RobotMap::driveSubsystemMotorControllerFrontLeft->SetControlMode(CANSpeedController::kPercentVbus);
-    RobotMap::driveSubsystemMotorControllerFrontRight->SetControlMode(CANSpeedController::kPercentVbus);
+    RobotMap::driveFrontLeft->SetControlMode(CANSpeedController::kPercentVbus);
+    RobotMap::driveFrontRight->SetControlMode(CANSpeedController::kPercentVbus);
 
 	driveCommand->Start();
 //	pneumaticSubsystem->testSolenoid->InitSolenoid();
@@ -121,8 +125,8 @@ void Robot::UpdateDashboardPeriodic() {
 //			SmartDashboard::PutBoolean("CompSwitch", wC->GetPressureSwitchValue());
 //			SmartDashboard::PutNumber("CompCurrent", wC->GetCompressorCurrent());
 //		}
-		CANTalon* canEncr = RobotMap::driveSubsystemMotorControllerFrontRight;
-		CANTalon* canEncl = RobotMap::driveSubsystemMotorControllerFrontLeft;
+		CANTalon* canEncr = RobotMap::driveFrontRight;
+		CANTalon* canEncl = RobotMap::driveFrontLeft;
 		Encoder* enc = RobotMap::driveSubsystemLEncoder;
 		if (NULL!=enc) {
 			SmartDashboard::PutNumber("LEncoderSpeed",canEncl->GetSpeed());
@@ -151,10 +155,11 @@ void Robot::UpdateDashboardPeriodic() {
 
 		// Debugging Talons in Follower mode
 		// They're not giving voltage or current readings, so check the PDP
-//		SmartDashboard::PutNumber("PDP Current for Talon 1", pdp->GetCurrent(0));
-//		SmartDashboard::PutNumber("PDP Current for Talon 2", pdp->GetCurrent(1));
-//		SmartDashboard::PutNumber("PDP Current for Talon 3", pdp->GetCurrent(2));
-//		SmartDashboard::PutNumber("PDP Current for Talon 4", pdp->GetCurrent(3));
+		pdp->UpdateTable();
+		//SmartDashboard::PutNumber("PDP Amps Talons 1 & 2", pdp->GetCurrent(0));
+		//SmartDashboard::PutNumber("PDP Amps Talons 3 & 4", pdp->GetCurrent(2));
+		//SmartDashboard::PutNumber("Total Watts", pdp->GetTotalPower());
+
 	}
 
 }
