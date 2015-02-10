@@ -32,7 +32,7 @@ public:
 	virtual void Interrupted();
 private:
 	int ticks, currentTime;
-	bool isFinished;
+	bool isFinished,firstTime;
 };
 
 #endif

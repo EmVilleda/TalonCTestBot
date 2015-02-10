@@ -44,6 +44,9 @@ public:
 	static Encoder* driveSubsystemREncoder;
 	static AnalogInput* distanceSensor;
 	static AnalogInput* colorSensor;
+//	static CANTalon* pickupMotorMain;
+//	static CANTalon* pickupMotorFollow;
+//	static Encoder* pickupEncoder;
 
 	static void init();
 };
