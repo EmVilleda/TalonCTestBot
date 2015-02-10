@@ -5,7 +5,7 @@
 		<width>319</width>
 		<property name="Text" value="-> -> -> -> -> -> -> -> -> -> -> -> "/>
 	</static-widget>
-	<widget field="PDP Amps Talons 1 & 2" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+	<widget field="PDP Amps Talons 1 and 2" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="0" y="48"/>
 	</widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
@@ -130,10 +130,4 @@
 </dashboard>
 <live-window>
 </live-window>
-	<hidden field="PDP Current for Talon 1"/>
-	<hidden field="PDP Current for Talon 3"/>
-	<hidden field="PDP Current for Talon 2"/>
-	<hidden field="Total Watts"/>
-	<hidden field="PDP Current for Talon 4"/>
-	<hidden field="PDP Amps Talons 3 & 4"/>
 </xml>
