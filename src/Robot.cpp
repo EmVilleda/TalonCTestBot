@@ -141,13 +141,6 @@ void Robot::UpdateDashboardPeriodic() {
 			SmartDashboard::PutNumber("REncoder Raw",enc->GetDistance());
 
 		}
-		SmartDashboard::PutNumber("CAN Front Left Fault", RobotMap::driveSubsystemMotorControllerFrontLeft->GetFaults());
-		double busVoltage = RobotMap::driveSubsystemMotorControllerFrontLeft->GetBusVoltage();
-		if (fabs(busVoltage-lastBusVoltage > 0.15)) {
-			SmartDashboard::PutNumber("Bus Voltage", busVoltage);
-			lastBusVoltage = busVoltage;
-		}
-		SmartDashboard::PutNumber("PID Error", RobotMap::driveSubsystemMotorControllerFrontLeft->GetClosedLoopError());
 
 		RobotMap::Ct->UpdateDashboard();
 
