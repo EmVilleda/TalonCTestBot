@@ -40,9 +40,9 @@ void RobotMap::init() {
 	//LiveWindow* lw = LiveWindow::GetInstance();
 	Ct = new CANTalons();
 
-	driveSubsystemMotorControllerFrontLeft = Ct->Init(3, (char *)"FrontLeft");
+	driveSubsystemMotorControllerFrontLeft = Ct->Init(5, (char *)"FrontLeft");
 	//lw->AddActuator("DriveSubsystem", "motorControllerFrontLeft", (CANTalon*) driveSubsystemmotorControllerFrontLeft);
-	driveSubsystemMotorControllerFrontRight =  Ct->Init(1, (char *)"FrontRight");
+	driveSubsystemMotorControllerFrontRight =  Ct->Init(3, (char *)"FrontRight");
 	//lw->AddActuator("DriveSubsystem", "motorControlleFrontRight", (CANTalon*) driveSubsystemmotorControlleFrontRight);
 	driveSubsystemMotorControllerBackLeft  =  Ct->Init(4, (char *)"BackLeft");
 	//lw->AddActuator("DriveSubsystem", "motorControllerBackLeft", (CANTalon*) driveSubsystemmotorControllerBackLeft);
@@ -73,10 +73,10 @@ void RobotMap::init() {
     driveSubsystemMotorControllerBackRight->SetControlMode(CANSpeedController::kPercentVbus);
     // Set the back talons to follow the front talons
     driveSubsystemMotorControllerBackLeft->SetControlMode(CANSpeedController::kFollower);
-    driveSubsystemMotorControllerBackLeft->Set(3);
+    driveSubsystemMotorControllerBackLeft->Set(5);
     driveSubsystemMotorControllerBackLeft->EnableControl();
     driveSubsystemMotorControllerBackRight->SetControlMode(CANSpeedController::kFollower);
-    driveSubsystemMotorControllerBackRight->Set(1);
+    driveSubsystemMotorControllerBackRight->Set(3);
     driveSubsystemMotorControllerBackRight->EnableControl();
 
     printf("Back Left %d\n", driveSubsystemMotorControllerBackLeft->GetControlMode());

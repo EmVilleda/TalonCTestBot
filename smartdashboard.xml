@@ -1,13 +1,44 @@
 <xml version="1.0">
 <dashboard>
 	<widget field="PID Error" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
-		<location x="237" y="448"/>
-		<width>641</width>
-		<height>124</height>
+		<location x="318" y="448"/>
+		<width>1078</width>
+		<height>232</height>
+	</widget>
+	<widget field="PickUpToteCommand" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="28"/>
+	</widget>
+	<widget field="PickUpCanCommand" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="18" y="12"/>
+	</widget>
+	<widget field="GoDownCommand" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="199" y="714"/>
+	</widget>
+	<widget field="DriveDistanceCommand" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="201" y="537"/>
+	</widget>
+	<widget field="DriveCommand" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="201" y="503"/>
+	</widget>
+	<widget field="BreakCommand" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="201" y="469"/>
+	</widget>
+	<widget field="AutonomousCommand" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="729"/>
+	</widget>
+	<widget field="Drive PID" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
+		<location x="320" y="8"/>
+		<width>1080</width>
+		<height>141</height>
+	</widget>
+	<widget field="Drive PID r" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
+		<location x="319" y="151"/>
+		<width>1082</width>
+		<height>145</height>
 	</widget>
 	<widget field="Bus Voltage" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
-		<location x="243" y="294"/>
-		<width>632</width>
+		<location x="321" y="298"/>
+		<width>1076</width>
 		<height>149</height>
 	</widget>
 	<widget field="CAN Front Left Fault" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.FormattedField">
@@ -17,20 +48,15 @@
 		<property name="Background" value="255.255.0.255"/>
 	</widget>
 	<widget field="BackRight-Volts" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
-		<location x="241" y="153"/>
+		<location x="322" y="571"/>
 		<width>634</width>
 		<height>139</height>
-	</widget>
-	<widget field="Drive PID" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
-		<location x="241" y="10"/>
-		<width>633</width>
-		<height>141</height>
 	</widget>
 	<widget field="TeleopPeriodic" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="0" y="656"/>
 	</widget>
 	<widget field="TeleopInit" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="219" y="567"/>
+		<location x="64" y="708"/>
 	</widget>
 	<widget field="REncoderSpeed" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="0" y="614"/>
@@ -78,7 +104,7 @@
 		<location x="0" y="320"/>
 	</widget>
 	<widget field="FrontLeft-Amps" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="351" y="606"/>
+		<location x="41" y="638"/>
 	</widget>
 	<widget field="Drive" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="0" y="265"/>
@@ -102,16 +128,16 @@
 		<location x="0" y="118"/>
 	</widget>
 	<widget field="BackRight-Amps" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="210" y="596"/>
+		<location x="57" y="676"/>
 	</widget>
 	<widget field="BackLeft-Volts" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="704" y="611"/>
+		<location x="205" y="693"/>
 	</widget>
 	<widget field="BackLeft-Status" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="0" y="55"/>
 	</widget>
 	<widget field="BackLeft-Amps" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="533" y="606"/>
+		<location x="198" y="650"/>
 	</widget>
 	<widget field="Autonomous Command" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="0" y="0"/>

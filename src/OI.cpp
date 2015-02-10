@@ -30,7 +30,7 @@ OI::OI() {
 	reverseSolenoidCommand = new ReverseSolenoidCommand();
 	forwardSolenoidCommand = new ForwardSolenoidCommand();
 
-	drivePidCommand = new DrivePid(1000);
+	drivePidCommand = new DrivePid(5000);
 	//driveCommand = new Drive();
 	
 	driveDistance = new DriveDistanceCommand(5000);

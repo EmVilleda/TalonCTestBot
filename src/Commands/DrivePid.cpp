@@ -25,9 +25,9 @@ DrivePid::DrivePid(int _ticks) {
 // Called just before this Command runs the first time
 void DrivePid::Initialize() {
 	firstTime=true;
-	SetTimeout(15);  // set 15 second timeout. Good enough?
-	double p = 1.0;
-	double i = 0.0;
+	SetTimeout(15000);  // set 15 second timeout. Good enough?
+	double p = 5;
+	double i = 2;
 	double d = 0.0;
 	double f = 1.0;
 
@@ -60,8 +60,10 @@ void DrivePid::Execute(){
 
 	double currPos = -(RobotMap::driveSubsystemMotorControllerFrontLeft->GetPosition());
 	double toGo = ticks-currPos;
-	if(toGo < 0.02) isFinished=true;
+	double currPosR = -(RobotMap::driveSubsystemMotorControllerFrontRight->GetPosition());
+//	if(fabs(toGo) < 0.02) isFinished=true;
 	SmartDashboard::PutNumber("Drive PID", currPos);
+	SmartDashboard::PutNumber("Drive PID r", currPosR);
 
 	//double pidErrVal = RobotMap::driveSubsystemMotorControllerFrontLeft->
 	//SmartDashboard::PutNumber("Drive PID Error", pidErrVal);
@@ -76,7 +78,8 @@ bool DrivePid::IsFinished() {
 
 // Called once after isFinished returns true
 void DrivePid::End() {
-	
+	Robot::driveSubsystem->robotDrive->ArcadeDrive(0, 0, true);
+	((DriveCommand *)Robot::driveCommand)->Start();
 }
 
 // Called when another command which requires one or more of the same
