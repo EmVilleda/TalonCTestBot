@@ -117,21 +117,7 @@ void Robot::UpdateDashboardPeriodic() {
 //			SmartDashboard::PutBoolean("CompSwitch", wC->GetPressureSwitchValue());
 //			SmartDashboard::PutNumber("CompCurrent", wC->GetCompressorCurrent());
 //		}
-		CANTalon* canEncr = RobotMap::driveFrontRight;
-		CANTalon* canEncl = RobotMap::driveFrontLeft;
-		Encoder* enc = RobotMap::driveSubsystemLEncoder;
-		if (NULL!=enc) {
-			SmartDashboard::PutNumber("LEncoderSpeed",canEncl->GetSpeed());
-			SmartDashboard::PutNumber("LEncoderPosition",canEncl->GetEncPosition());
-			SmartDashboard::PutNumber("LEncoder Raw",enc->GetDistance());
-		}
-		enc = RobotMap::driveSubsystemREncoder;
-		if (NULL!=enc) {
-			SmartDashboard::PutNumber("REncoderSpeed",canEncr->GetSpeed());
-			SmartDashboard::PutNumber("REncoderPosition",canEncr->GetEncPosition());
-			SmartDashboard::PutNumber("REncoder Raw",enc->GetDistance());
 
-		}
 		SmartDashboard::PutNumber("CAN Front Left Fault", RobotMap::driveFrontLeft->GetFaults());
 		double busVoltage = RobotMap::driveFrontLeft->GetBusVoltage();
 		if (fabs(busVoltage-lastBusVoltage > 0.15)) {
@@ -140,6 +126,8 @@ void Robot::UpdateDashboardPeriodic() {
 		}
 		SmartDashboard::PutNumber("PID Error R", RobotMap::driveFrontRight->GetClosedLoopError());
 		SmartDashboard::PutNumber("PID Error L", RobotMap::driveFrontLeft->GetClosedLoopError());
+		SmartDashboard::PutNumber("Left Encoder Position", Robot::driveSubsystem->GetLeftEncoderPosition());
+		SmartDashboard::PutNumber("Right Encoder Position", Robot::driveSubsystem->GetRightEncoderPosition());
 
 		RobotMap::Ct->UpdateDashboard();
 

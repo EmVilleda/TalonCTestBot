@@ -25,8 +25,6 @@ RobotDrive* RobotMap::robotDrive = NULL;
 DoubleSolenoid* RobotMap::pneumaticSubsystemSolenoid = NULL;
 //Compressor* RobotMap::workingCompressor = NULL;
 CANTalons* RobotMap::Ct = NULL;
-Encoder* RobotMap::driveSubsystemLEncoder = NULL;
-Encoder* RobotMap::driveSubsystemREncoder = NULL;
 //AnalogInput* RobotMap::distanceSensor = NULL;
 DigitalInput* RobotMap::colorSensor = NULL;
 
