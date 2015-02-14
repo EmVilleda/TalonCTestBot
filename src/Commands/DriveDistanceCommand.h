@@ -43,6 +43,9 @@ private:
 	bool isCommandDone;
 	float prevLeftEnc,prevRightEnc;
 	float distanceTraveled;
+	float distanceTraveledR;
+	float leftMotorOutput;
+	float rightMotorOutput;
 public:
 	DriveDistanceCommand(int dist);
 	virtual void Initialize();

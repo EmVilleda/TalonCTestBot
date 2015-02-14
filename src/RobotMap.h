@@ -52,7 +52,7 @@ public:
 //	static CANTalon* pickupMotorMain;
 //	static CANTalon* pickupMotorFollow;
 //	static Encoder* pickupEncoder;
-
+	//static
 	static void init();
 };
 #endif

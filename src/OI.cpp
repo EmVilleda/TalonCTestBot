@@ -35,7 +35,7 @@ OI::OI() {
 
 	drivePidCommand = new DrivePid(4000);
 	
-	driveDistance = new DriveDistanceCommand(1000);
+	driveDistance = new DriveDistanceCommand(10000);
 
 	toggleSolenoidButton = new JoystickButton(joystick, 8);		// menu
 	reverseSolenoidButton= new JoystickButton(joystick, 6);		// r bumper
