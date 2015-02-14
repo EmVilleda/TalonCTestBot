@@ -42,7 +42,9 @@ private:
 	int distance;
 	bool isCommandDone;
 	float prevLeftEnc,prevRightEnc;
+
 	float distanceTraveledL;
+
 	float distanceTraveledR;
 	float leftMotorOutput;
 	float rightMotorOutput;
