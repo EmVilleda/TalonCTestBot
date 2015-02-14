@@ -41,18 +41,18 @@ void DriveCommand::Execute() {
 	if (x > joystickValueCap) x = joystickValueCap;
 	else if (x < -joystickValueCap) x = -joystickValueCap;
 
-	bool isDistSensorOK = RobotMap::distanceSensor->GetVoltage() <= distanceSensorThreshold;
+//	bool isDistSensorOK = RobotMap::distanceSensor->GetVoltage() <= distanceSensorThreshold;
 	// If the distanceSensor voltage is > 0.6, we are close enough to the target.
 	// Only allow us to drive backward which means positive y
-	if (isDistSensorOK || (!isDistSensorOK && y>0)) {
+//	if (isDistSensorOK || (!isDistSensorOK && y>0)) {
 //		On an XBox controller, RawAxis4 is the X axis of the right stick
 //		We will use this for the left/right control only
 //		Drive(a,b) where a is the magnitude and b is the curve of it
 		Robot::driveSubsystem->robotDrive->ArcadeDrive(y,x);
-	}
-	else {
-		Robot::driveSubsystem->robotDrive->ArcadeDrive(0,0,true);
-	}
+//	}
+
+//	Robot::driveSubsystem->robotDrive->ArcadeDrive(0,0,true);
+
 	SmartDashboard::PutNumber("Drive Command Y", y);
 	SmartDashboard::PutNumber("Drive Command X", x);
 }

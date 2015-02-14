@@ -42,8 +42,8 @@ public:
 //	static Compressor* workingCompressor;
 	static Encoder* driveSubsystemLEncoder;
 	static Encoder* driveSubsystemREncoder;
-	static AnalogInput* distanceSensor;
-	static AnalogInput* colorSensor;
+//	static AnalogInput* distanceSensor;
+	static DigitalInput* colorSensor;
 //	static CANTalon* pickupMotorMain;
 //	static CANTalon* pickupMotorFollow;
 //	static Encoder* pickupEncoder;

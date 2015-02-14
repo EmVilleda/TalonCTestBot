@@ -44,8 +44,8 @@ void DriveDistanceCommand::Initialize() {
 void DriveDistanceCommand::Execute() {
 	float leftEnc = Robot::driveSubsystem->GetLeftEncoderPosition();
 	float rightEnc = Robot::driveSubsystem->GetRightEncoderPosition();
-	bool isDistSensorOK = RobotMap::distanceSensor->GetVoltage() <= distanceSensorThreshold;
-	if (!isDistSensorOK) isCommandDone=true;
+//	bool isDistSensorOK = RobotMap::distanceSensor->GetVoltage() <= distanceSensorThreshold;
+//	if (!isDistSensorOK) isCommandDone=true;
 	if ((distance - distanceTraveled) > 512) {
 		Robot::driveSubsystem->robotDrive->ArcadeDrive(-0.8, 0.0);
 		printf("High \n");

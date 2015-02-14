@@ -28,9 +28,9 @@ void DriveLightSensor::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void DriveLightSensor::Execute(){
-	bool isDistSensorOK = RobotMap::distanceSensor->GetVoltage() <= distanceSensorThreshold;
-	if (!isDistSensorOK) isFinished=true;
-	else Robot::driveSubsystem->robotDrive->ArcadeDrive(-0.3, 0, true);
+//	bool isDistSensorOK = RobotMap::distanceSensor->GetVoltage() <= distanceSensorThreshold;
+//	if (!isDistSensorOK) isFinished=true;
+//	else Robot::driveSubsystem->robotDrive->ArcadeDrive(-0.3, 0, true);
 }
 
 // Make this return true when this Command no longer needs to run execute()

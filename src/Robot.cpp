@@ -143,17 +143,18 @@ void Robot::UpdateDashboardPeriodic() {
 			SmartDashboard::PutNumber("Bus Voltage", busVoltage);
 			lastBusVoltage = busVoltage;
 		}
-		SmartDashboard::PutNumber("PID Error", RobotMap::driveSubsystemMotorControllerFrontLeft->GetClosedLoopError());
+		SmartDashboard::PutNumber("PID Error R", RobotMap::driveSubsystemMotorControllerFrontRight->GetClosedLoopError());
+		SmartDashboard::PutNumber("PID Error L", RobotMap::driveSubsystemMotorControllerFrontLeft->GetClosedLoopError());
 
 		RobotMap::Ct->UpdateDashboard();
 
-		if (NULL!=RobotMap::distanceSensor) {
-			SmartDashboard::PutNumber("DistanceSensorVoltage", RobotMap::distanceSensor->GetVoltage());  // THIS IS THE LINE THAT IS FAILING!!
-		} else {
-			printf("distanceSensor pointer NULL\n");
+//		if (NULL!=RobotMap::distanceSensor) {
+//			SmartDashboard::PutNumber("DistanceSensorVoltage", RobotMap::distanceSensor->GetVoltage());  // THIS IS THE LINE THAT IS FAILING!!
+//		} else {
+//			printf("distanceSensor pointer NULL\n");
 		}
 		if (NULL!=RobotMap::colorSensor) {
-			SmartDashboard::PutNumber("ColorSensorVoltage", RobotMap::colorSensor->GetVoltage());  // THIS IS THE LINE THAT IS FAILING!!
+			SmartDashboard::PutNumber("ColorSensorVoltage", RobotMap::colorSensor->Get());  // THIS IS THE LINE THAT IS FAILING!!
 		} else {
 			printf("colorSensor pointer NULL\n");
 		}
@@ -164,7 +165,7 @@ void Robot::UpdateDashboardPeriodic() {
 //		SmartDashboard::PutNumber("PDP Current for Talon 2", pdp->GetCurrent(1));
 //		SmartDashboard::PutNumber("PDP Current for Talon 3", pdp->GetCurrent(2));
 //		SmartDashboard::PutNumber("PDP Current for Talon 4", pdp->GetCurrent(3));
-	}
+//	}
 
 }
 
