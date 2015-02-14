@@ -45,15 +45,6 @@ void Robot::RobotInit() {
 	lw = LiveWindow::GetInstance();
 
 	pdp = new PowerDistributionPanel();
-	pdp->UpdateTable();
-	printf("PDP voltage %f, engergy %f.\n",
-		   pdp->GetVoltage(), pdp->GetTotalEnergy());
-
-
-//	lEncoder = RobotMap::driveSubsystemLEncoder;
-//	rEncoder = RobotMap::driveSubsystemREncoder;
-//
-//	colorSensor = new AnalogInput(1);
 
 
 	// instantiate the command used for the autonomous period
