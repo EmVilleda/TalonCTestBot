@@ -43,36 +43,36 @@ void TurnEncoder::Initialize() {
 	double f = 1.0;
 
 	//SO MANY COPYPASTED API CALLS AAAAARGH
-    RobotMap::driveSubsystemMotorControllerFrontLeft->SetControlMode(CANSpeedController::kPosition);
-    RobotMap::driveSubsystemMotorControllerFrontLeft->SetPID(p,i,d);
-    RobotMap::driveSubsystemMotorControllerFrontLeft->SetF(f);
-    RobotMap::driveSubsystemMotorControllerFrontLeft->ClearIaccum();
-    RobotMap::driveSubsystemMotorControllerFrontLeft->SetPosition(0.0);
-    RobotMap::driveSubsystemMotorControllerFrontLeft->SetFeedbackDevice(CANTalon::QuadEncoder);
-    //RobotMap::driveSubsystemMotorControllerFrontLeft->
+    RobotMap::driveFrontLeft->SetControlMode(CANSpeedController::kPosition);
+    RobotMap::driveFrontLeft->SetPID(p,i,d);
+    RobotMap::driveFrontLeft->SetF(f);
+    RobotMap::driveFrontLeft->ClearIaccum();
+    RobotMap::driveFrontLeft->SetPosition(0.0);
+    RobotMap::driveFrontLeft->SetFeedbackDevice(CANTalon::QuadEncoder);
+    //RobotMap::driveFrontLeft->
 
-    RobotMap::driveSubsystemMotorControllerFrontRight->SetControlMode(CANSpeedController::kPosition);
-    RobotMap::driveSubsystemMotorControllerFrontRight->SetPID(p,i,d);
-    RobotMap::driveSubsystemMotorControllerFrontRight->SetF(f);
-    RobotMap::driveSubsystemMotorControllerFrontRight->ClearIaccum();
-    RobotMap::driveSubsystemMotorControllerFrontRight->SetPosition(0.0);
-    RobotMap::driveSubsystemMotorControllerFrontRight->SetFeedbackDevice(CANTalon::QuadEncoder);
+    RobotMap::driveFrontRight->SetControlMode(CANSpeedController::kPosition);
+    RobotMap::driveFrontRight->SetPID(p,i,d);
+    RobotMap::driveFrontRight->SetF(f);
+    RobotMap::driveFrontRight->ClearIaccum();
+    RobotMap::driveFrontRight->SetPosition(0.0);
+    RobotMap::driveFrontRight->SetFeedbackDevice(CANTalon::QuadEncoder);
 
-	leftStartPos=RobotMap::driveSubsystemMotorControllerFrontLeft->GetEncPosition();
-	rightStartPos=RobotMap::driveSubsystemMotorControllerFrontRight->GetEncPosition();
+	leftStartPos=RobotMap::driveFrontLeft->GetEncPosition();
+	rightStartPos=RobotMap::driveFrontRight->GetEncPosition();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void TurnEncoder::Execute(){
 	//Robot::driveSubsystem->robotDrive->ArcadeDrive(0,1.0);
 
-    //RobotMap::driveSubsystemMotorControllerFrontRight->
+    //RobotMap::driveFrontRight->
 	printf("Executing TurnEncoder!");
 
-	RobotMap::driveSubsystemMotorControllerFrontLeft->Set(targetEncTicks);
-	RobotMap::driveSubsystemMotorControllerFrontRight->Set(-targetEncTicks);
+	RobotMap::driveFrontLeft->Set(targetEncTicks);
+	RobotMap::driveFrontRight->Set(-targetEncTicks);
 
-	double currPos = RobotMap::driveSubsystemMotorControllerFrontLeft->GetPosition();
+	double currPos = RobotMap::driveFrontLeft->GetPosition();
 	double toGo = targetEncTicks-currPos;
 	if(toGo < 5) isFinished=true;
 

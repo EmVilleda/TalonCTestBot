@@ -9,9 +9,15 @@
 // it from being updated in the future.
 
 #include "DriveCommand.h"
-
-#include "../Constants.h"
 #include "../Robot.h"
+
+// The following will limit the max drive speed
+// For competition, this should be 1.0
+// Until then, we'll keep it slow.
+static float joystickValueCap = 1.0;
+
+// This is the distance we want to go forward in autonomous to get the tote and the robot into the
+//static float autoSetDistanceForward = 0.0;
 
 DriveCommand::DriveCommand() {
 	// Use requires() here to declare subsystem dependencies
@@ -33,7 +39,12 @@ void DriveCommand::Execute() {
 	// Note that the sense of Y is negative, That is, if one pushes the joystick forward, Y is negative.
 	// So a negative y value means we want to drive forward.
 	// The ArcadeDrive method seems to expect this.
-	float x = Robot::oi->joystick->GetRawAxis(4);
+	float x;
+	// adapt for the kind of joystick we have. Most non-console (e.g. XBox, PS)
+	// only have a single joystick
+	unsigned int count = Robot::oi->driverStation->GetStickAxisCount(0);
+	if (count > 4) x = Robot::oi->joystick->GetRawAxis(4);
+	else x = Robot::oi->joystick->GetX();
 
 	// Cap our joystick positions for testing
 	if (y > joystickValueCap) y = joystickValueCap;

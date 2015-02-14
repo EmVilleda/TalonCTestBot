@@ -15,7 +15,15 @@
 
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
-#include "../Constants.h"
+
+// The number of encoder ticks which correspond to 1 revolution of a wheel
+static float encoderTicksPerRevo = 1024;
+
+// The diameter of the robot (middle of wheel to middle of wheel), in
+static float robotDiameter = 25.3125;
+
+// The diameter of the wheels, in
+static float wheelDiameter = 6.25;
 
 //#define ENCODERFULLREVOLUTION (encoderTicksPerRevo*robotDiameter/wheelDiameter)
 

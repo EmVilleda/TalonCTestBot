@@ -32,21 +32,21 @@ void DrivePid::Initialize() {
 	double f = 0.0;
 
 	//SO MANY API CALLS AAAAARGH
-    RobotMap::driveSubsystemMotorControllerFrontLeft->SetControlMode(CANSpeedController::kPosition);
-    RobotMap::driveSubsystemMotorControllerFrontLeft->SetPID(p,i,d);
-//    RobotMap::driveSubsystemMotorControllerFrontLeft->SetF(f);
-    RobotMap::driveSubsystemMotorControllerFrontLeft->ClearIaccum();
-    RobotMap::driveSubsystemMotorControllerFrontLeft->SetPosition(0.0);
-    RobotMap::driveSubsystemMotorControllerFrontLeft->SetFeedbackDevice(CANTalon::QuadEncoder);
-    RobotMap::driveSubsystemMotorControllerFrontLeft->SetSensorDirection(true);
+    RobotMap::driveFrontLeft->SetControlMode(CANSpeedController::kPosition);
+    RobotMap::driveFrontLeft->SetPID(p,i,d);
+    RobotMap::driveFrontLeft->SetF(f);
+    RobotMap::driveFrontLeft->ClearIaccum();
+    RobotMap::driveFrontLeft->SetPosition(0.0);
+    RobotMap::driveFrontLeft->SetFeedbackDevice(CANTalon::QuadEncoder);
+    //RobotMap::driveFrontLeft->
 
-    RobotMap::driveSubsystemMotorControllerFrontRight->SetControlMode(CANSpeedController::kPosition);
-    RobotMap::driveSubsystemMotorControllerFrontRight->SetPID(p,i,d);
-//    RobotMap::driveSubsystemMotorControllerFrontRight->SetF(f);
-    RobotMap::driveSubsystemMotorControllerFrontRight->ClearIaccum();
-    RobotMap::driveSubsystemMotorControllerFrontRight->SetPosition(0.0);
-    RobotMap::driveSubsystemMotorControllerFrontRight->SetFeedbackDevice(CANTalon::QuadEncoder);
-    RobotMap::driveSubsystemMotorControllerFrontRight->SetSensorDirection(true);
+    RobotMap::driveFrontRight->SetControlMode(CANSpeedController::kPosition);
+    RobotMap::driveFrontRight->SetPID(p,i,d);
+    RobotMap::driveFrontRight->SetF(f);
+    RobotMap::driveFrontRight->ClearIaccum();
+    RobotMap::driveFrontRight->SetPosition(0.0);
+    RobotMap::driveFrontRight->SetFeedbackDevice(CANTalon::QuadEncoder);
+    //RobotMap::driveFrontRight->
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -56,25 +56,22 @@ void DrivePid::Execute(){
 		Initialize();
 		firstTime=false;
 	}
-	RobotMap::driveSubsystemMotorControllerFrontRight->SetControlMode(CANSpeedController::kFollower);
-	RobotMap::driveSubsystemMotorControllerFrontRight->Set(4);
-	RobotMap::driveSubsystemMotorControllerFrontRight->EnableControl();
-	RobotMap::driveSubsystemMotorControllerFrontLeft->Set(-ticks);
-//	RobotMap::driveSubsystemMotorControllerFrontRight->Set(ticks);
+	RobotMap::driveFrontRight->SetControlMode(CANSpeedController::kFollower);
+	RobotMap::driveFrontRight->Set(4);
+	RobotMap::driveFrontRight->EnableControl();
+	RobotMap::driveFrontLeft->Set(-ticks);
+//	RobotMap::driveFrontRight->Set(ticks);
 
 	SmartDashboard::PutNumber("PID Initial Ticks", ticks);
 
-	double currPos = -(RobotMap::driveSubsystemMotorControllerFrontLeft->GetEncPosition());
+	double currPos = -(RobotMap::driveFrontLeft->GetEncPosition());
 	double toGo = ticks-currPos;
-	double currPosR = -(RobotMap::driveSubsystemMotorControllerFrontRight->GetEncPosition());
-//	if(fabs(toGo) < 0.02) isFinished=true;
+	double currPosR = -(RobotMap::driveFrontRight->GetEncPosition());
+	if(fabs(toGo) < 0.02) isFinished=true;
 	SmartDashboard::PutNumber("Drive PID", currPos);
 	SmartDashboard::PutNumber("Drive PID r", currPosR);
 
-	//double pidErrVal = RobotMap::driveSubsystemMotorControllerFrontLeft->
-	//SmartDashboard::PutNumber("Drive PID Error", pidErrVal);
-
-	printf("Executing DrivePid!\n");
+	printf("Executing DrivePid!");
 }
 
 // Make this return true when this Command no longer needs to run execute()

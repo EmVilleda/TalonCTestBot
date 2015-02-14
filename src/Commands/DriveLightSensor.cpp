@@ -9,7 +9,6 @@
 // it from being updated in the future.
 
 #include "DriveLightSensor.h"
-#include "../Constants.h"
 
 DriveLightSensor::DriveLightSensor() {
 	// Use requires() here to declare subsystem dependencies
