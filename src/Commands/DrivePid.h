@@ -9,26 +9,30 @@
 // it from being updated in the future.
 
 
-#ifndef DRIVE_H
-#define DRIVE_H
+#ifndef DRIVECOMMAND_H
+#define DRIVECOMMAND_H
 
 
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
 
 /**
- *
+ * This Command will drive forward based on a PID Loop in the Talons
+ * For now, we'll only drive Talons 3 and 4 since we're having trouble getting Talon 2 to behave.
  *
  * @author ExampleAuthor
  */
-class Drive: public Command {
+class DrivePid: public Command {
 public:
-	Drive();
+	DrivePid(int _ticks);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
+private:
+	int ticks, currentTime;
+	bool isFinished,firstTime;
 };
 
 #endif

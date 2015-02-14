@@ -47,7 +47,6 @@ private:
 	int maxTalon = 0;
 	struct Talon {
 			CANTalon *talon;
-			int deviceNumber = 0;
 			bool status = false;
 			float voltage = 0.0;
 			float current = 0.0;
