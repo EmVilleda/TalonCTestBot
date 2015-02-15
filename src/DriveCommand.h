@@ -9,20 +9,29 @@
 // it from being updated in the future.
 
 
-#pragma once
+#ifndef DRIVE_H
+#define DRIVE_H
 
-
-#include "Commands/Subsystem.h"
-#include "AutoDriveDistanceCommand.h"
-#include "AutoTurn90Command.h"
 #include "../Robot.h"
+
+// This is the voltage from the distanceSensor. As we get closer to an obstacle, the voltage increases
+// until we get really close. This should be calibrated so we can read the actual distance, but for
+// now we'll just guess at a voltage threshold.
+
 
 /**
  *
  *
  * @author ExampleAuthor
  */
-class AutonomousCommand: public CommandGroup {
+class DriveCommand: public Command {
 public:
-	AutonomousCommand();
+	DriveCommand();
+	virtual void Initialize();
+	virtual void Execute();
+	virtual bool IsFinished();
+	virtual void End();
+	virtual void Interrupted();
 };
+
+#endif
