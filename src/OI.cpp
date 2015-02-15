@@ -19,6 +19,7 @@
 #include "OI.h"
 #include "Commands/DriveCommand.h"
 #include "Commands/DrivePid.h"
+#include "Commands/Turn90Command.h"
 
 OI::OI() {
 	// Process operator interface input here.
@@ -33,9 +34,9 @@ OI::OI() {
 	driverStation = DriverStation::GetInstance();
 	printf("Joystick 0 has %d axes\n", driverStation->GetStickAxisCount(0));
 
-	drivePidCommand = new DrivePid(4000);
 	
-	driveDistance = new DriveDistanceCommand(10000);
+	driveDistance = new DriveDistanceCommand(1000);
+	turn90 = new Turn90Command(750);
 
 	toggleSolenoidButton = new JoystickButton(joystick, 8);		// menu
 	reverseSolenoidButton= new JoystickButton(joystick, 6);		// r bumper
@@ -43,7 +44,9 @@ OI::OI() {
 
 	driveDistanceButton = new JoystickButton(joystick, 1);		//A
 
-	drivePidButton = new JoystickButton(joystick, 2);			//B
+//	Don't accidentially turn on the drivePID command!
+//	drivePidButton = new JoystickButton(joystick, 2);			//B
+	turn90Button = new JoystickButton(joystick, 2);				//B --- replace this if you want to put back the drivePidButton
 
 	printf("buttons constructed\n");
 	toggleSolenoidButton->WhenPressed(toggleSolenoidCommand);
@@ -51,9 +54,10 @@ OI::OI() {
 	forwardSolenoidButton->WhenPressed(forwardSolenoidCommand);
 
 	driveDistanceButton->WhenPressed(driveDistance);
+	turn90Button->WhenPressed(turn90);
 
 
-	drivePidButton->WhenPressed(drivePidCommand);
+//	drivePidButton->WhenPressed(drivePidCommand);
 
     // SmartDashboard Buttons
 
