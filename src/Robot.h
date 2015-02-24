@@ -33,6 +33,12 @@
 
 class Robot : public IterativeRobot {
 public:
+	// Image smartdashboard stuff
+	IMAQdxSession camera;
+	bool cameraOn;
+	Image *frame;
+	IMAQdxError imaqError;
+
 	static OI *oi;
 	static Command *driveCommand;
 	CommandGroup *autonomousCommand;
