@@ -26,15 +26,15 @@ DrivePid::DrivePid(int _ticks) {
 void DrivePid::Initialize() {
 	firstTime=true;
 	SetTimeout(15000);  // set 15 second timeout. Good enough?
-	double p = 10.0;
-	double i = 0.1;
-	double d = 50.0;
-	double f = 0.0;
+	static double driveP = 10.0;
+	static double driveI = 0.1;
+	static double driveD = 50.0;
+	static double driveF = 0.0;
 
-	//SO MANY API CALLS AAAAARGH
+	//Talon Api Calls
     RobotMap::driveFrontLeft->SetControlMode(CANSpeedController::kPosition);
-    RobotMap::driveFrontLeft->SetPID(p,i,d);
-    RobotMap::driveFrontLeft->SetF(f);
+    RobotMap::driveFrontLeft->SetPID(driveP,driveI,driveD);
+    RobotMap::driveFrontLeft->SetF(driveF);
     RobotMap::driveFrontLeft->ClearIaccum();
     RobotMap::driveFrontLeft->SetPosition(0.0);
     RobotMap::driveFrontLeft->SetFeedbackDevice(CANTalon::QuadEncoder);
@@ -42,8 +42,8 @@ void DrivePid::Initialize() {
     //RobotMap::driveFrontLeft->
 
     RobotMap::driveFrontRight->SetControlMode(CANSpeedController::kPosition);
-    RobotMap::driveFrontRight->SetPID(p,i,d);
-    RobotMap::driveFrontRight->SetF(f);
+    RobotMap::driveFrontRight->SetPID(driveP,driveI,driveD);
+    RobotMap::driveFrontRight->SetF(driveF);
     RobotMap::driveFrontRight->ClearIaccum();
     RobotMap::driveFrontRight->SetPosition(0.0);
     RobotMap::driveFrontRight->SetFeedbackDevice(CANTalon::QuadEncoder);

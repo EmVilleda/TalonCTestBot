@@ -30,6 +30,10 @@ public:
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
+	static double driveP;
+	static double driveI;
+	static double driveD;
+	static double driveF;
 private:
 	int ticks, currentTime;
 	bool isFinished,firstTime;

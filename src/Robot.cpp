@@ -92,6 +92,7 @@ void Robot::TeleopInit() {
 //	pneumaticSubsystem->testSolenoid->InitSolenoid();
 
 	SmartDashboard::PutString("TeleopInit", "Called");
+	SmartDashboard::PutNumber("Drivep", DrivePid)
 }
 
 void Robot::TeleopPeriodic() {
@@ -102,6 +103,7 @@ void Robot::TeleopPeriodic() {
 	UpdateDashboardPeriodic();
 	//TODO: move to Drive command
 	SmartDashboard::PutString("TeleopPeriodic", "Invoked");
+
 }
 
 void Robot::TestPeriodic() {
@@ -128,6 +130,7 @@ void Robot::UpdateDashboardPeriodic() {
 		SmartDashboard::PutNumber("PID Error L", RobotMap::driveFrontLeft->GetClosedLoopError());
 		SmartDashboard::PutNumber("Left Encoder Position", Robot::driveSubsystem->GetLeftEncoderPosition());
 		SmartDashboard::PutNumber("Right Encoder Position", Robot::driveSubsystem->GetRightEncoderPosition());
+		SmartDashboard::GetNumber("Drive P" )
 
 		RobotMap::Ct->UpdateDashboard();
 
